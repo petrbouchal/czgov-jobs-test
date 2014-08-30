@@ -16,7 +16,7 @@ ministerstva = {
     'MF' : ['MFČR','Ministerstvo financí','http://www.mfcr.cz','http://www.mfcr.cz/cs/o-ministerstvu/pracovni-mista/volna-mista-mf'],
     'MK' : ['MKČR','Ministerstvo kultury','http://www.mkcr.cz','http://www.mkcr.cz/volna-mista/default.htm'],
     'MSMT' : ['MŠMT','Ministerstvo školství','http://www.msmt.cz','http://www.msmt.cz/ministerstvo/volna-mista'],
-    'MSp' : ['MSpr','Ministerstvo spravedlnosti','http://www.justice.cz','NA'],
+    'MSp' : ['MSpr','Ministerstvo spravedlnosti','http://www.justice.cz','http://portal.justice.cz/Justice2/MS/ms.aspx?j=33&o=23&k=5956'],
     'MZd' : ['MZd','Ministerstvo zdravotnictví','http://www.mzcr.cz','http://www.mzcr.cz/obsah/pracovni-prilezitosti_838_1.html'],
     'MD' : ['MDČR','Ministerstvo dopravy','http://www.mdcr.cz','http://www.mdcr.cz/cs/Nabidka-zamestnani/'],
     'MZe' : ['MDČR','Ministerstvo zemědělství','http://www.eagri.cz','http://eagri.cz/public/web/mze/ministerstvo-zemedelstvi/volna-pracovni-mista/'],
@@ -53,6 +53,10 @@ minparameters = {
     'MSMT' : [False,
             {'name':'div', 'id':'article','class':True},
              {'name':'div','id':None,'class':'article-content'}],
+    'MSp' : [False,
+            {'name':'div', 'id':None,'class':'news-list clearfix'},
+             {'name':'div','id':None,'class':'item main'},
+            {'name':'a','id':True,'class':None}],
     'MK' : [False,
             {'name':'div', 'id':'main','class':None},
              {'name':'div','id':'content','class':None}],
@@ -63,8 +67,7 @@ minparameters = {
             {'name':'div', 'id':'content','class':None},
              {'name':'div','id':'articleList','class':None},
              {'name': 'h3', 'class': None, 'id': None},
-             {'name': 'a', 'id': None, 'class': None}
-    ],
+             {'name': 'a', 'id': None, 'class': None}],
     'MMR' : [True,
             {'name':'div', 'id':None,'class':'rightPanel'},
             {'name':'div','id':'content','class':True},
@@ -80,12 +83,14 @@ minparameters = {
 #        level1=minparameters['MZd'][1],level2=minparameters['MZd'][2],
 #        items=minparameters['MZd'][3],subitems=minparameters['MZd'][4],dosubitems=True)
 # scrape(ministerstva['MD'][3],minparameters['MD'][1],minparameters['MD'][2])
-# scrape(ministerstva['MZe'][3],minparameters['MZe'][1],minparameters['MZe'][2])
+# print(scrape(ministerstva['MSp'][0],ministerstva['MSp'][3],minparameters['MSp'][1],minparameters['MSp'][2],
+#              minparameters['MSp'][3]))
 # scrape(ministerstva['MV'][3],minparameters['MV'][1],minparameters['MV'][2],items=minparameters['MV'][3],
 #        subitems=minparameters['MV'][4],dosubitems=True)
 
 # Loop
-activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe']
+
+activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp']
 
 jobsall = []
 for dept in activedepts:
