@@ -93,9 +93,27 @@ for dept in activedepts:
     depturl = ministerstva[dept][3]
     deptpars = minparameters[dept]
     if deptpars[0]==False:
-        jobsall = jobsall + scrape(depturl,deptpars[1], deptpars[2])
+        jobsall = jobsall + scrape(ministerstva[dept][0],depturl,deptpars[1], deptpars[2])
     else:
-        jobsall = jobsall + scrape(depturl,deptpars[1], deptpars[2],
+        jobsall = jobsall + scrape(ministerstva[dept][0],depturl,deptpars[1], deptpars[2],
                deptpars[3],deptpars[4],dosubitems=True)
 print(len(jobsall))
-print(jobsall)
+from pprint import pprint
+pprint(jobsall)
+
+import litepiesql
+import sqlite3
+
+db = sqlite3.connect('data.sqlite')
+cursor = db.cursor()
+
+if len(cursor.execute("""SELECT name FROM sqlite_master WHERE type='table' AND name='data';""").fetchall()) == 0:
+    cursor.execute("""CREATE TABLE data
+                        (jobtitle, joburl, dept, datetime)
+                    """)
+db.commit()
+db.close()
+
+db = litepiesql.Database('data.sqlite')
+for row in jobsall:
+    db.insert('data',row)
