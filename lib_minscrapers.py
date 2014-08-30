@@ -34,9 +34,9 @@ def scrape(deptabb, url, level1, level2, items = {'name': 'a', 'id': None, 'clas
     # print(level2['class'])
     level2html = level1html.find(level2['name'], {'class':level2['class']}, id=level2['id'])
     # print(level2html)
-    print(items)
+    # print(items)
     jobs = level2html.find_all(items['name'],{'class':items['class']},id=items['id'])
-    print(jobs)
+    # print(jobs)
     if dosubitems:
         # print(subitems)
         newjobs = []
@@ -47,15 +47,16 @@ def scrape(deptabb, url, level1, level2, items = {'name': 'a', 'id': None, 'clas
         jobs = newjobs
 
 
-    print(jobs)
+    # print(jobs)
     jobslist = []
+    now = datetime.now()
     datetimestring = datetime.strftime(datetime.now(), '%Y-%m-%d %H:%M:%S%Z')
     for job in jobs:
         parsed_jobspage = urlparse.urlparse(url)
         parsed_jobpage = urlparse.urlparse(job['href'])
         fulljoburl = parsed_jobspage.scheme + '://' + str(parsed_jobspage.netloc) + '/' \
                      + str(parsed_jobpage.path + '?' + parsed_jobpage.query)
-        jobdict = {'joburl':fulljoburl, 'jobtitle':job.contents[0], 'dept':deptabb,'datetime':datetimestring}
+        jobdict = {'joburl':fulljoburl, 'jobtitle':job.contents[0], 'dept':deptabb,'datetime':now}
         jobslist.append(jobdict)
     # print(jobslist)
     return jobslist

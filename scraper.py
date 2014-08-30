@@ -91,6 +91,7 @@ minparameters = {
 # Loop
 
 activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp']
+activedepts = ['MPO']
 
 jobsall = []
 for dept in activedepts:
@@ -114,7 +115,7 @@ cursor = db.cursor()
 
 if len(cursor.execute("""SELECT name FROM sqlite_master WHERE type='table' AND name='data';""").fetchall()) == 0:
     cursor.execute("""CREATE TABLE data
-                        (jobtitle, joburl, dept, datetime)
+                        (jobtitle, joburl, dept, datetime timestamp)
                     """)
 db.commit()
 db.close()
