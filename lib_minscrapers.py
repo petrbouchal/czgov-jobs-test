@@ -1,10 +1,9 @@
 __author__ = 'petrbouchal'
 
-def scrape(deptabb, url, level1, level2, items = {'name': 'a', 'id': None, 'class': None},
+def scrape(timestamp, deptabb, url, level1, level2, items = {'name': 'a', 'id': None, 'class': None},
            subitems={'name': 'a', 'id': None, 'class': None}, dosubitems=False):
     from bs4 import BeautifulSoup
     print(url)
-    from datetime import datetime
     import mechanize
     import urlparse
     br = mechanize.Browser()
@@ -49,14 +48,12 @@ def scrape(deptabb, url, level1, level2, items = {'name': 'a', 'id': None, 'clas
 
     # print(jobs)
     jobslist = []
-    now = datetime.now()
-    datetimestring = datetime.strftime(datetime.now(), '%Y-%m-%d %H:%M:%S%Z')
     for job in jobs:
         parsed_jobspage = urlparse.urlparse(url)
         parsed_jobpage = urlparse.urlparse(job['href'])
         fulljoburl = parsed_jobspage.scheme + '://' + str(parsed_jobspage.netloc) + '/' \
                      + str(parsed_jobpage.path + '?' + parsed_jobpage.query)
-        jobdict = {'joburl':fulljoburl, 'jobtitle':job.contents[0], 'dept':deptabb,'datetime':now}
+        jobdict = {'joburl':fulljoburl, 'jobtitle':job.contents[0], 'dept':deptabb,'datetime':timestamp}
         jobslist.append(jobdict)
     # print(jobslist)
     return jobslist

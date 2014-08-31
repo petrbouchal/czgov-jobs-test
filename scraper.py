@@ -5,6 +5,9 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 
 from lib_minscrapers import scrape
+from datetime import datetime
+
+now = datetime.now()
 
 __author__ = 'petrbouchal'
 
@@ -107,9 +110,9 @@ for dept in activedepts:
     depturl = ministerstva[dept][3]
     deptpars = minparameters[dept]
     if deptpars[0]==False:
-        jobsall = jobsall + scrape(ministerstva[dept][0],depturl,deptpars[1], deptpars[2], deptpars[3])
+        jobsall = jobsall + scrape(now, ministerstva[dept][0],depturl,deptpars[1], deptpars[2], deptpars[3])
     else:
-        jobsall = jobsall + scrape(ministerstva[dept][0],depturl,deptpars[1], deptpars[2],
+        jobsall = jobsall + scrape(now, ministerstva[dept][0],depturl,deptpars[1], deptpars[2],
                deptpars[3],deptpars[4],dosubitems=True)
 print(len(jobsall))
 from pprint import pprint
