@@ -56,4 +56,5 @@ def scrape(timestamp, deptabb, url, level1, level2, items = {'name': 'a', 'id': 
         jobdict = {'joburl':fulljoburl, 'jobtitle':job.contents[0], 'dept':deptabb,'datetime':timestamp}
         jobslist.append(jobdict)
     # print(jobslist)
+    print('Nalezeno ' + str(len(jobslist)) + ' pozic na ' + str(deptabb))
     return jobslist

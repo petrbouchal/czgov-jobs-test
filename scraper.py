@@ -23,7 +23,7 @@ ministerstva = {
     'MZd' : ['MZd','Ministerstvo zdravotnictví','http://www.mzcr.cz','http://www.mzcr.cz/obsah/pracovni-prilezitosti_838_1.html'],
     'MD' : ['MDČR','Ministerstvo dopravy','http://www.mdcr.cz','http://www.mdcr.cz/cs/Nabidka-zamestnani/'],
     'MZe' : ['MZe','Ministerstvo zemědělství','http://www.eagri.cz','http://eagri.cz/public/web/mze/ministerstvo-zemedelstvi/volna-pracovni-mista/'],
-    'MO' : ['MO','Ministerstvo obrany','http://www.mocr.army.cz','http://www.mdcr.cz/cs/Nabidka-zamestnani/'],
+    'MO' : ['MO','Ministerstvo obrany','http://www.mocr.army.cz','http://www.mocr.army.cz/ministr-a-ministerstvo/kariera-vzdelavani/pracovni-prilezitosti/default.htm'],
     'MMR' : ['MMR','Ministerstvo pro místní rozvoj','http://www.mmr.cz','http://www.mmr.cz/cs/Pracovni-prilezitosti/'],
     'MZP' : ['MŽP','Ministerstvo životního prostředí','http://www.mzp.cz','http://mzp.cz/cz/volna_mista'],
     'MZV' : ['MZV','Ministerstvo zahraničních věcí','http://www.mzv.cz','http://www.mzv.cz/jnp/cz/o_ministerstvu/zamestnani/aktualni_nabidky_zamestnani/index.html'],
@@ -57,6 +57,10 @@ minparameters = {
     'MF' : [False,
             {'name':'div', 'id':None,'class':'mainContent'},
              {'name':'div','id':None,'class':'layoutFull'},
+             {'name': 'a', 'id': None, 'class': None}],
+    'MO' : [False,
+            {'name':'div', 'id':None,'class':'item'},
+             {'name':'div','id':None,'class':'txt-left'},
              {'name': 'a', 'id': None, 'class': None}],
     'MSMT' : [False,
             {'name':'div', 'id':'article','class':True},
@@ -101,12 +105,12 @@ minparameters = {
 
 # Loop
 
-activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp']
+activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MO']
 # activedepts = ['MPO']
 
 jobsall = []
 for dept in activedepts:
-    print(dept)
+    # print(dept)
     depturl = ministerstva[dept][3]
     deptpars = minparameters[dept]
     if deptpars[0]==False:
@@ -114,9 +118,9 @@ for dept in activedepts:
     else:
         jobsall = jobsall + scrape(now, ministerstva[dept][0],depturl,deptpars[1], deptpars[2],
                deptpars[3],deptpars[4],dosubitems=True)
-print(len(jobsall))
+print('Celkem nalezeno pozic: ', len(jobsall))
 from pprint import pprint
-pprint(jobsall)
+# pprint(jobsall)
 
 import litepiesql
 import sqlite3
