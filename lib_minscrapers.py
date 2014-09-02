@@ -53,7 +53,7 @@ def scrape(timestamp, deptabb, url, level1, level2, items = {'name': 'a', 'id': 
         parsed_jobpage = urlparse.urlparse(job['href'])
         fulljoburl = parsed_jobspage.scheme + '://' + str(parsed_jobspage.netloc) + '/' \
                      + str(parsed_jobpage.path + '?' + parsed_jobpage.query)
-        jobdict = {'joburl':fulljoburl, 'jobtitle':job.contents[0], 'dept':deptabb,'datetime':timestamp}
+        jobdict = {'joburl':fulljoburl, 'jobtitle':job.contents[0].capitalize(),'dept':deptabb,'datetime':timestamp}
         jobslist.append(jobdict)
     # print(jobslist)
     print('Nalezeno ' + str(len(jobslist)) + ' pozic na ' + str(deptabb))
