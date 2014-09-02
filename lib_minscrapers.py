@@ -6,6 +6,7 @@ def scrape(timestamp, deptabb, url, level1, level2, items = {'name': 'a', 'id': 
     print(url)
     import mechanize
     import urlparse
+    import re
     br = mechanize.Browser()
     br.set_handle_redirect(False)
     br.set_handle_robots(False)
