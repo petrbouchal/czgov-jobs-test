@@ -54,7 +54,7 @@ def scrape(timestamp, deptabb, url, level1, level2, items = {'name': 'a', 'id': 
         parsed_jobpage = urlparse.urlparse(job['href'])
         fulljoburl = urlparse.urlunparse([parsed_jobspage.scheme, parsed_jobspage.netloc,
                      parsed_jobpage.path,parsed_jobpage.params,parsed_jobpage.query, parsed_jobpage.fragment])
-        if deptabb=='MSp' fulljoburl = url # to get around session-dependent MSp pages
+        if deptabb=='MSp': fulljoburl = url # to get around session-dependent MSp pages
         jobtitle = re.sub('([a-zA-Z])', lambda x: x.groups()[0].upper(), job.contents[0], 1)
         jobdict = {'joburl':fulljoburl, 'jobtitle':jobtitle,'dept':deptabb,'datetime':timestamp}
         jobslist.append(jobdict)
