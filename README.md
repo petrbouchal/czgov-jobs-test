@@ -1,5 +1,9 @@
 # Volná místa 
 
+- Skript pro stahování volných pozic z webových stránek českých ministerstev
+- velmi hrubá verze
+- optimalizováno pro morph.io
+- v současné době nestahuje MŽP, MD a MZV
 
 ## To do
 
@@ -12,4 +16,6 @@
 - [ ] add MZV
 
 ## Links
-https://morph.io/petrbouchal/GovJobsCZ
+- Scraper a možnost stažení dat: https://morph.io/petrbouchal/GovJobsCZ
+- Shiny app: http://petrbouchal.shinyapps.io/czjobs
+- Shiny app na webu Byrokrates: http://byrokrates.cz/praceprostat
