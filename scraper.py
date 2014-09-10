@@ -106,8 +106,8 @@ minparameters = {
 
 # Loop
 
-activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MO']
-# activedepts = ['MPO']
+activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MO','MD']
+# activedepts = ['MD']
 
 jobsall = []
 for dept in activedepts:
@@ -138,4 +138,5 @@ db.close()
 
 db = litepiesql.Database('data.sqlite')
 for row in jobsall:
-    db.insert('data',row)
+    # db.insert('data',row)
+    print(row)
