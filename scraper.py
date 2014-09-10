@@ -83,6 +83,14 @@ minparameters = {
             {'name':'div', 'id':'content','class':None},
              {'name':'div','id':'article','class':None},
              {'name': 'a', 'id': None, 'class': None}],
+    'MZP' : [False,
+            {'name':'div', 'id':'content','class':None},  # based on current HTML
+             {'name':'div','id':None,'class':'contentMain'},  # based on current HTML
+             {'name': 'a', 'id': None, 'class': None}],  # needs updating when info becomes available
+    'MZV' : [False,
+            {'name':'div', 'id':None,'class':'article_body'},  # based on current HTML
+             {'name':'div','id':None,'class':'article_content'},  # based on current HTML
+             {'name': 'a', 'id': None, 'class': None}],  # needs updating when info becomes available
     'MV' : [True,
             {'name':'div', 'id':'content','class':None},
              {'name':'div','id':'articleList','class':None},
