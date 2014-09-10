@@ -1,23 +1,44 @@
 __author__ = 'petrbouchal'
 
+
+def open_checksnag(request):
+    import urllib2
+    try:
+        response = urllib2.urlopen(request)
+    except urllib2.HTTPError as e:
+        # print(e)
+        if e.getcode() == 302 and e.headers.get('Location') is not None:
+            opener = urllib2.build_opener()
+            cookie = e.headers.get('Set-Cookie')
+            # print(cookie)
+            opener.addheaders.append(('Cookie',cookie))
+            opener.addheaders.append(('User-agent','Mozilla/5.0 (Linux i686)'))
+            newurl = e.headers.get('Location')
+            # print(newurl)
+            response = opener.open(newurl)
+            return response
+        else:
+            print('Error opening page')
+            raise
+    return response
+
+
 def scrape(timestamp, deptabb, url, level1, level2, items = {'name': 'a', 'id': None, 'class': None},
            subitems={'name': 'a', 'id': None, 'class': None}, dosubitems=False):
     from bs4 import BeautifulSoup
     print(url)
-    import mechanize
+    # import mechanize
     import urlparse
-    br = mechanize.Browser()
-    br.set_handle_redirect(False)
-    br.set_handle_robots(False)
-    try:
-        page0 = br.open(url)
-    except mechanize.HTTPError as e:
-        print(e.reason)
-        print(e.code)
-        print(e.info())
-        print(e.geturl())
-        page0 = 'blah'
-    page = page0.read()
+    # cjar = mechanize.CookieJar()
+    # br = mechanize.Browser()
+    # br.set_cookiejar(cjar)
+    # br.set_handle_robots(False)
+    # br.set_handle_redirect(True)
+    # opener = mechanize.build_opener(*br.handlers)
+    # request = mechanize.Request(url)
+    # request.add_header('User-agent', 'Mozilla/5.0 (Linux i686)')
+    page = open_checksnag(url)
+    page = page.read()
     # print(page)
     page = BeautifulSoup(page)
 
