@@ -71,6 +71,10 @@ minparameters = {
             {'name':'div', 'id':None,'class':'news-list clearfix'},
              {'name':'div','id':None,'class':'item main'},
             {'name':'a','id':True,'class':None}],
+    'MSp2' : [False,
+            {'name':'div', 'id':None,'class':'news-list clearfix'},
+             {'name':'div','id':None,'class':'item main'},
+            {'name':'a','id':True,'class':None}],
     'MK' : [False,
             {'name':'div', 'id':'main','class':None},
              {'name':'div','id':'content','class':None},
@@ -106,7 +110,7 @@ minparameters = {
 
 # Loop
 
-activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MO','MD']
+activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MSp2','MO','MD']
 # activedepts = ['MD']
 
 jobsall = []
@@ -138,5 +142,5 @@ db.close()
 
 db = litepiesql.Database('data.sqlite')
 for row in jobsall:
-    # db.insert('data',row)
-    print(row)
+    db.insert('data',row)
+    # print(row)
