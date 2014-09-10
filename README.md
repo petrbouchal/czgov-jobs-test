@@ -3,15 +3,15 @@
 - Skript pro stahování volných pozic z webových stránek českých ministerstev
 - velmi hrubá verze
 - optimalizováno pro morph.io
-- v současné době nestahuje MŽP, MD a MZV
+- v současné době nestahuje MŽP a MZV
 
 ## To do
 
 - [ ] scope out list of bodies
 - [ ] add fallback for when nothing is found
-- [ ] add fallback for when page not found (e.g. second page of results)
+- [x] add fallback for when page not found (e.g. second page of results)
 - [ ] add error handling
-- [ ] resolve MD HTTP issue
+- [x] resolve MD HTTP issue
 - [ ] add MZP
 - [ ] add MZV
 
