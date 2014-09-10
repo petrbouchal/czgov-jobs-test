@@ -20,6 +20,7 @@ ministerstva = {
     'MK' : ['MKČR','Ministerstvo kultury','http://www.mkcr.cz','http://www.mkcr.cz/volna-mista/default.htm'],
     'MSMT' : ['MŠMT','Ministerstvo školství','http://www.msmt.cz','http://www.msmt.cz/ministerstvo/volna-mista'],
     'MSp' : ['MSp','Ministerstvo spravedlnosti','http://www.justice.cz','http://portal.justice.cz/Justice2/MS/ms.aspx?j=33&o=23&k=5956'],
+    'MSp2' : ['MSp','Ministerstvo spravedlnosti','http://www.justice.cz','http://portal.justice.cz/Justice2/MS/ms.aspx?j=33&o=23&k=5956&page=2'],
     'MZd' : ['MZd','Ministerstvo zdravotnictví','http://www.mzcr.cz','http://www.mzcr.cz/obsah/pracovni-prilezitosti_838_1.html'],
     'MD' : ['MDČR','Ministerstvo dopravy','http://www.mdcr.cz','http://www.mdcr.cz/cs/Nabidka-zamestnani/nz.htm'],
     'MZe' : ['MZe','Ministerstvo zemědělství','http://www.eagri.cz','http://eagri.cz/public/web/mze/ministerstvo-zemedelstvi/volna-pracovni-mista/'],
@@ -105,8 +106,8 @@ minparameters = {
 
 # Loop
 
-activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MO','MD']
-# activedepts = ['MD']
+activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MO']
+# activedepts = ['MPO']
 
 jobsall = []
 for dept in activedepts:
@@ -137,5 +138,4 @@ db.close()
 
 db = litepiesql.Database('data.sqlite')
 for row in jobsall:
-    # db.insert('data',row)
-    print(row)
+    db.insert('data',row)

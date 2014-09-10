@@ -29,7 +29,7 @@ def scrape(timestamp, deptabb, url, level1, level2, items = {'name': 'a', 'id': 
     print(url)
     # import mechanize
     import urlparse
-    # cjar = mechanize.CookieJar()
+    import re
     # br = mechanize.Browser()
     # br.set_cookiejar(cjar)
     # br.set_handle_robots(False)
@@ -72,9 +72,11 @@ def scrape(timestamp, deptabb, url, level1, level2, items = {'name': 'a', 'id': 
     for job in jobs:
         parsed_jobspage = urlparse.urlparse(url)
         parsed_jobpage = urlparse.urlparse(job['href'])
-        fulljoburl = parsed_jobspage.scheme + '://' + str(parsed_jobspage.netloc) + '/' \
-                     + str(parsed_jobpage.path + '?' + parsed_jobpage.query)
-        jobdict = {'joburl':fulljoburl, 'jobtitle':job.contents[0], 'dept':deptabb,'datetime':timestamp}
+        fulljoburl = urlparse.urlunparse([parsed_jobspage.scheme, parsed_jobspage.netloc,
+                     parsed_jobpage.path,parsed_jobpage.params,parsed_jobpage.query, parsed_jobpage.fragment])
+        if deptabb=='MSp': fulljoburl = url # to get around session-dependent MSp pages
+        jobtitle = re.sub('([a-zA-Z])', lambda x: x.groups()[0].upper(), job.contents[0], 1)
+        jobdict = {'joburl':fulljoburl, 'jobtitle':jobtitle,'dept':deptabb,'datetime':timestamp}
         jobslist.append(jobdict)
     # print(jobslist)
     print('Nalezeno ' + str(len(jobslist)) + ' pozic na ' + str(deptabb))
