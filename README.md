@@ -3,7 +3,7 @@
 - Skript pro stahování volných pozic z webových stránek českých ministerstev
 - velmi hrubá verze
 - optimalizováno pro morph.io
-- v současné době nestahuje MŽP a MZV
+- v současné době nestahuje MŽP
 
 ## To do
 
@@ -13,7 +13,7 @@
 - [ ] add error handling
 - [x] resolve MD HTTP issue
 - [ ] add MZP
-- [ ] add MZV
+- [x] add MZV
 
 ## Links
 - Scraper a možnost stažení dat: https://morph.io/petrbouchal/GovJobsCZ
