@@ -90,7 +90,7 @@ minparameters = {
     'MZV' : [False,
             {'name':'div', 'id':None,'class':'article_body'},  # based on current HTML
              {'name':'div','id':None,'class':'article_content'},  # based on current HTML
-             {'name': 'a', 'id': None, 'class': None}],  # needs updating when info becomes available
+             {'name': 'a', 'id': None, 'class': 'link_vice'}],  # needs updating when info becomes available
     'MV' : [True,
             {'name':'div', 'id':'content','class':None},
              {'name':'div','id':'articleList','class':None},
@@ -118,7 +118,7 @@ minparameters = {
 
 # Loop
 
-activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MSp2','MO','MD']
+activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MSp2','MO','MD','MZV']
 # activedepts = ['MD']
 
 jobsall = []
