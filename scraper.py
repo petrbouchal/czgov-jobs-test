@@ -29,6 +29,9 @@ ministerstva = {
     'MZP' : ['MŽP','Ministerstvo životního prostředí','http://www.mzp.cz','http://mzp.cz/cz/volna_mista'],
     'MZV' : ['MZV','Ministerstvo zahraničních věcí','http://www.mzv.cz','http://www.mzv.cz/jnp/cz/o_ministerstvu/zamestnani/aktualni_nabidky_zamestnani/index.html'],
     'MPO' : ['MPO','Ministerstvo průmyslu a obchodu','http://www.mpo.cz','http://www.mpo.cz/dokument61716.html'],
+    'CSSZ' : ['ČSSZ'],'Česká správa sociálního zabezpečení','http://www.cssz.cz','http://www.cssz.cz/cz/o-cssz/volna-mista/']
+    'UP' : ['UP'],'Úřad práce ','https://portal.mpsv.cz/upcr','https://portal.mpsv.cz/upcr/vmnaup']
+    'FS' : ['FS'],'Finanční správa','http://www.financnisprava.cz/','http://www.financnisprava.cz/cs/financni-sprava/volna-pracovni-mista']
 }
 
 # Parameters for scraping job pages of each department
@@ -101,7 +104,21 @@ minparameters = {
             {'name':'div', 'id':None,'class':'rightPanel'},
             {'name':'div','id':'content','class':True},
             {'name':'div','class':'ClanekOdkaz','id':None},
-            {'name':'a','id':None,'class':None}]
+            {'name':'a','id':None,'class':None}],
+    'CSSZ' : [True,
+            {'name':'div', 'id':'main-content','class':'exclusive'},
+            {'name':'div','id':None,'class':'article'},
+            {'name':'li','class':None,'id':None},
+            {'name':'a','class':None,'id':None}],
+    'FS' : [True,
+            {'name':'div', 'id':'main-content','class':'exclusive'},
+            {'name':'div','id':None,'class':'article'},
+            {'name':'li','class':None,'id':None},
+            {'name':'a','class':None,'id':None}],
+    'UP' : [False,
+            {'name':'div', 'id':None,'class':'rightPanel'},
+            {'name':'div','id':'content','class':True},
+            {'name':'div','class':'ClanekOdkaz','id':None}]
 }
 
 # Individual function calls to test things
@@ -119,8 +136,8 @@ minparameters = {
 
 # Loop
 
-activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MSp2','MO','MD','MZV']
-# activedepts = ['MZV']
+# activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MSp2','MO','MD','MZV']
+activedepts = ['CSSZ']
 
 jobsall = []
 for dept in activedepts:
