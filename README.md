@@ -30,7 +30,7 @@
 - [ ] implement programmatic pagination
 - [ ] add error handling
 - [ ] rewrite scraper routine to take whole dict item as input and deal with the rest
-- [ ] (merge the two input dictionaries)
+- [ ] merge the two input dictionaries
 - [ ] document data model for input parameters
 - [ ] place input data into external json files
 - [ ] scope out list of bodies
