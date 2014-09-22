@@ -136,7 +136,7 @@ minparameters = {
 
 # Loop
 
-activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MSp2','MO','MD','MZV']
+activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MSp2','MO','MD','MZV','CSSZ']
 # activedepts = ['CSSZ']
 
 jobsall = []
