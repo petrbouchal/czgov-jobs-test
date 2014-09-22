@@ -12,7 +12,7 @@
 ## To do - scope
 
 - [ ] add MZP (waiting for job to appear to learn from)
-- [ ] add CSSZ (in progress: should be easy)
+- [x] add CSSZ (in progress: should be easy)
 - [ ] add NKU (should be easy)
 - [ ] add FU/FS (could use new functionality - pagination and multi-element titles)
 - [ ] add UP (requires use new functionality - different-element title and url)
