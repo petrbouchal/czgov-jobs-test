@@ -23,7 +23,7 @@ ministerstva = {
     'MSp2' : ['MSp','Ministerstvo spravedlnosti','http://www.justice.cz','http://portal.justice.cz/Justice2/MS/ms.aspx?j=33&o=23&k=5956&page=2'],
     'MZd' : ['MZd','Ministerstvo zdravotnictví','http://www.mzcr.cz','http://www.mzcr.cz/obsah/pracovni-prilezitosti_838_1.html'],
     'MD' : ['MDČR','Ministerstvo dopravy','http://www.mdcr.cz','http://www.mdcr.cz/cs/Nabidka-zamestnani/nz.htm'],
-    'MZe' : ['MZe','Ministerstvo zemědělství','http://www.eagri.cz','http://eagri.cz/public/web/mze/ministerstvo-zemedelstvi/volna-pracovni-mista/'],
+    'MZe' : ['MZe','Ministerstvo zemědělství','http://eagri.cz/public/web/mze/ministerstvo-zemedelstvi/volna-pracovni-mista/?pageSize=50'],
     'MO' : ['MO','Ministerstvo obrany','http://www.mocr.army.cz','http://www.mocr.army.cz/ministr-a-ministerstvo/kariera-vzdelavani/pracovni-prilezitosti/default.htm'],
     'MMR' : ['MMR','Ministerstvo pro místní rozvoj','http://www.mmr.cz','http://www.mmr.cz/cs/Pracovni-prilezitosti/'],
     'MZP' : ['MŽP','Ministerstvo životního prostředí','http://www.mzp.cz','http://mzp.cz/cz/volna_mista'],
