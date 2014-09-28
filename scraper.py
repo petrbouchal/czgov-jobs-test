@@ -1,7 +1,5 @@
 from __future__ import unicode_literals, print_function, division
 # This Python file uses the following encoding: utf-8
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
 import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
@@ -13,7 +11,7 @@ now = datetime.now()
 
 __author__ = 'petrbouchal'
 
-# Basic information: name, proper abbreviation, top url and jobs url
+# Basic infomration: name, proper abbreviation, top url and jobs url
 ministerstva = {
     'MPSV' : ['MPSV','Ministerstvo práce a sociálních věcí','http://www.mpsv.cz','http://www.mpsv.cz/cs/70'],
     'MV' : ['MVČR','Ministerstvo vnitra','http://www.mvcr.cz','http://www.mvcr.cz/nabidka-mist.aspx'],
