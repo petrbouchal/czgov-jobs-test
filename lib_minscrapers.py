@@ -86,46 +86,45 @@ def scrape_old(timestamp, deptabb, url, level1, level2, items={'name': 'a', 'id'
     return jobslist
 
 
-def scrape(timestamp, deptdictitem):
+def scrape(timestamp, bodydata):
     from bs4 import BeautifulSoup
 
-    print(deptdictitem['jobsurl'])
+    print(bodydata['jobsurl'])
     import urlparse
     import re
-    page = open_checksnag(deptdictitem['jobsurl'])
+    page = open_checksnag(bodydata['jobsurl'])
     page = page.read()
     # print(page)
     page = BeautifulSoup(page)
     jobslist = []
 
-    jobs = page.select(deptdictitem['jobtitledata']['itemselect'])
+    jobs = page.select(bodydata['jobtitledata']['itemselect'])
     for i in jobs: print(i.contents)
 
     # Add href attribute if URL was collected separately
-    if deptdictitem['separateurl']:
-        joburls = page.select(deptdictitem['joburldata']['itemselect'])
+    if bodydata['separateurl']:
+        joburls = page.select(bodydata['joburldata']['itemselect'])
         for count in range(0,len(jobs),1):
             jobs[count].attrs['href'] = joburls[count]['href']
 
     # Add additional title text if it is to be collected
-    if deptdictitem['jobtitledata']['additionaltitletext']:
-        additionaltexts = page.select(deptdictitem['jobtitledata']['additionaltextselect'])
+    if bodydata['jobtitledata']['additionaltitletext']:
+        additionaltexts = page.select(bodydata['jobtitledata']['additionaltextselect'])
         for count in range(0,len(jobs),1):
             jobs[count].contents = jobs[count].contents[0] + ', ' + additionaltexts[count].contents[0]
     else:
         for job in jobs: job.contents = job.contents[0]
 
-    # print(jobs)
     for job in jobs:
-        parsed_jobsurl = urlparse.urlparse(deptdictitem['jobsurl'])
+        parsed_jobsurl = urlparse.urlparse(bodydata['jobsurl'])
         parsed_joburl = urlparse.urlparse(job['href'])
         fulljoburl = urlparse.urlunparse([parsed_jobsurl.scheme, parsed_jobsurl.netloc,
                                           parsed_joburl.path, parsed_joburl.params, parsed_joburl.query,
                                           parsed_joburl.fragment])
-        if deptdictitem['abbrev'] == 'MSp': fulljoburl = deptdictitem['jobsurl']  # to get around session-dependent MSp pages
+        if bodydata['abbrev'] == 'MSp': fulljoburl = bodydata['jobsurl']  # to get around session-dependent MSp pages
         jobtitle = re.sub('([\w])', lambda x: x.groups()[0].upper(), job.contents, 1, flags=re.UNICODE)
-        jobdict = {'joburl': fulljoburl, 'jobtitle': jobtitle, 'dept': deptdictitem['abbrevcz'], 'datetime': timestamp}
+        jobdict = {'joburl': fulljoburl, 'jobtitle': jobtitle, 'dept': bodydata['abbrevcz'], 'datetime': timestamp}
         jobslist.append(jobdict)
     # print(jobslist)
-    print('Nalezeno ' + str(len(jobslist)) + ' pozic na ' + str(deptdictitem['abbrevcz']))
+    print('Nalezeno ' + str(len(jobslist)) + ' pozic na ' + str(bodydata['abbrevcz']))
     return jobslist

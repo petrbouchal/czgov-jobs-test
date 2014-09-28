@@ -6,7 +6,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
-from lib_minscrapers import scrape, scrape
+from lib_minscrapers import scrape
 from datetime import datetime
 
 now = datetime.now()
@@ -125,7 +125,7 @@ minparameters = {
 }
 
 import json
-minparameters = json.load(open('./mindata.py'))
+minparameters = json.load(open('./bodiesdata.py'))
 
 # Loop
 
