@@ -1,17 +1,19 @@
 from __future__ import unicode_literals, print_function, division
 # This Python file uses the following encoding: utf-8
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
-from lib_minscrapers import scrape
+from lib_minscrapers import scrape, scrape
 from datetime import datetime
 
 now = datetime.now()
 
 __author__ = 'petrbouchal'
 
-# Basic infomration: name, proper abbreviation, top url and jobs url
+# Basic information: name, proper abbreviation, top url and jobs url
 ministerstva = {
     'MPSV' : ['MPSV','Ministerstvo práce a sociálních věcí','http://www.mpsv.cz','http://www.mpsv.cz/cs/70'],
     'MV' : ['MVČR','Ministerstvo vnitra','http://www.mvcr.cz','http://www.mvcr.cz/nabidka-mist.aspx'],
@@ -122,34 +124,18 @@ minparameters = {
             {'name':'div','class':'ClanekOdkaz','id':None}]
 }
 
-# Individual function calls to test things
-# scrape(ministerstva['MPO'][3],minparameters['MPO'][1],minparameters['MPO'][2])
-# scrape(ministerstva['UV'][3],minparameters['UV'][1],minparameters['UV'][2])
-# scrape(ministerstva['MPSV'][3],minparameters['MPSV'][1],minparameters['MPSV'][2])
-# scrape(url=ministerstva['MZd'][3],
-#        level1=minparameters['MZd'][1],level2=minparameters['MZd'][2],
-#        items=minparameters['MZd'][3],subitems=minparameters['MZd'][4],dosubitems=True)
-# scrape(ministerstva['MD'][3],minparameters['MD'][1],minparameters['MD'][2])
-# print(scrape(ministerstva['MSp'][0],ministerstva['MSp'][3],minparameters['MSp'][1],minparameters['MSp'][2],
-#              minparameters['MSp'][3]))
-# scrape(ministerstva['MV'][3],minparameters['MV'][1],minparameters['MV'][2],items=minparameters['MV'][3],
-#        subitems=minparameters['MV'][4],dosubitems=True)
+import json
+minparameters = json.load(open('./mindata.py'))
 
 # Loop
 
-activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MSp2','MO','MD','MZV','CSSZ']
-# activedepts = ['MZe']
+# activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MSp2','MO','MD','MZV','CSSZ']
+activedepts = ['FS']
 
 jobsall = []
 for dept in activedepts:
     # print(dept)
-    depturl = ministerstva[dept][3]
-    deptpars = minparameters[dept]
-    if deptpars[0]==False:
-        jobsall = jobsall + scrape(now, ministerstva[dept][0],depturl,deptpars[1], deptpars[2], deptpars[3])
-    else:
-        jobsall = jobsall + scrape(now, ministerstva[dept][0],depturl,deptpars[1], deptpars[2],
-               deptpars[3],deptpars[4],dosubitems=True)
+    jobsall = jobsall + scrape(now, minparameters[dept])
 print('Celkem nalezeno pozic: ', len(jobsall))
 from pprint import pprint
 # pprint(jobsall)
@@ -170,4 +156,4 @@ db.close()
 db = litepiesql.Database('data.sqlite')
 for row in jobsall:
     db.insert('data',row)
-    # print(row)
+    print(row)

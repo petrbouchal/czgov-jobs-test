@@ -3,6 +3,7 @@ __author__ = 'petrbouchal'
 
 def open_checksnag(request):
     import urllib2
+    request = urllib2.Request(url=request, headers={'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'})
     try:
         response = urllib2.urlopen(request)
     except urllib2.HTTPError as e:
@@ -11,8 +12,8 @@ def open_checksnag(request):
             opener = urllib2.build_opener()
             cookie = e.headers.get('Set-Cookie')
             # print(cookie)
-            opener.addheaders.append(('Cookie',cookie))
-            opener.addheaders.append(('User-agent','Mozilla/5.0 (Linux i686)'))
+            opener.addheaders.append(('Cookie', cookie))
+            opener.addheaders.append(('User-agent', 'Mozilla/5.0 (Linux i686)'))
             newurl = e.headers.get('Location')
             # print(newurl)
             response = opener.open(newurl)
@@ -23,9 +24,10 @@ def open_checksnag(request):
     return response
 
 
-def scrape(timestamp, deptabb, url, level1, level2, items = {'name': 'a', 'id': None, 'class': None},
+def scrape_old(timestamp, deptabb, url, level1, level2, items={'name': 'a', 'id': None, 'class': None},
            subitems={'name': 'a', 'id': None, 'class': None}, dosubitems=False):
     from bs4 import BeautifulSoup
+
     print(url)
     # import mechanize
     import urlparse
@@ -42,7 +44,7 @@ def scrape(timestamp, deptabb, url, level1, level2, items = {'name': 'a', 'id': 
     # print(page)
     page = BeautifulSoup(page)
 
-    level1html = page.find(level1['name'],{'class':level1['class']}, id=level1['id'])
+    level1html = page.find(level1['name'], {'class': level1['class']}, id=level1['id'])
     # print(level1)
     # print(level1['name'])
     # print(level1['id'])
@@ -52,17 +54,17 @@ def scrape(timestamp, deptabb, url, level1, level2, items = {'name': 'a', 'id': 
     # print(level2['name'])
     # print(level2['id'])
     # print(level2['class'])
-    level2html = level1html.find(level2['name'], {'class':level2['class']}, id=level2['id'])
+    level2html = level1html.find(level2['name'], {'class': level2['class']}, id=level2['id'])
     # print(level2html)
     # print(items)
-    jobs = level2html.find_all(items['name'],{'class':items['class']},id=items['id'])
+    jobs = level2html.find_all(items['name'], {'class': items['class']}, id=items['id'])
     # print(jobs)
     if dosubitems:
         # print(subitems)
         newjobs = []
         jobsforlevel4 = jobs
         for job in jobsforlevel4:
-            newjob = job.find(subitems['name'], {'class':subitems['class']},id = subitems['id'])
+            newjob = job.find(subitems['name'], {'class': subitems['class']}, id=subitems['id'])
             newjobs.append(newjob)
         jobs = newjobs
 
@@ -73,11 +75,57 @@ def scrape(timestamp, deptabb, url, level1, level2, items = {'name': 'a', 'id': 
         parsed_jobspage = urlparse.urlparse(url)
         parsed_jobpage = urlparse.urlparse(job['href'])
         fulljoburl = urlparse.urlunparse([parsed_jobspage.scheme, parsed_jobspage.netloc,
-                     parsed_jobpage.path,parsed_jobpage.params,parsed_jobpage.query, parsed_jobpage.fragment])
-        if deptabb=='MSp': fulljoburl = url # to get around session-dependent MSp pages
+                                          parsed_jobpage.path, parsed_jobpage.params, parsed_jobpage.query,
+                                          parsed_jobpage.fragment])
+        if deptabb == 'MSp': fulljoburl = url  # to get around session-dependent MSp pages
         jobtitle = re.sub('([\w])', lambda x: x.groups()[0].upper(), job.contents[0], 1, flags=re.UNICODE)
-        jobdict = {'joburl':fulljoburl, 'jobtitle':jobtitle,'dept':deptabb,'datetime':timestamp}
+        jobdict = {'joburl': fulljoburl, 'jobtitle': jobtitle, 'dept': deptabb, 'datetime': timestamp}
         jobslist.append(jobdict)
     # print(jobslist)
     print('Nalezeno ' + str(len(jobslist)) + ' pozic na ' + str(deptabb))
+    return jobslist
+
+
+def scrape(timestamp, deptdictitem):
+    from bs4 import BeautifulSoup
+
+    print(deptdictitem['jobsurl'])
+    import urlparse
+    import re
+    page = open_checksnag(deptdictitem['jobsurl'])
+    page = page.read()
+    # print(page)
+    page = BeautifulSoup(page)
+    jobslist = []
+
+    jobs = page.select(deptdictitem['jobtitledata']['itemselect'])
+    for i in jobs: print(i.contents)
+
+    # Add href attribute if URL was collected separately
+    if deptdictitem['separateurl']:
+        joburls = page.select(deptdictitem['joburldata']['itemselect'])
+        for count in range(0,len(jobs),1):
+            jobs[count].attrs['href'] = joburls[count]['href']
+
+    # Add additional title text if it is to be collected
+    if deptdictitem['jobtitledata']['additionaltitletext']:
+        additionaltexts = page.select(deptdictitem['jobtitledata']['additionaltextselect'])
+        for count in range(0,len(jobs),1):
+            jobs[count].contents = jobs[count].contents[0] + ', ' + additionaltexts[count].contents[0]
+    else:
+        for job in jobs: job.contents = job.contents[0]
+
+    # print(jobs)
+    for job in jobs:
+        parsed_jobsurl = urlparse.urlparse(deptdictitem['jobsurl'])
+        parsed_joburl = urlparse.urlparse(job['href'])
+        fulljoburl = urlparse.urlunparse([parsed_jobsurl.scheme, parsed_jobsurl.netloc,
+                                          parsed_joburl.path, parsed_joburl.params, parsed_joburl.query,
+                                          parsed_joburl.fragment])
+        if deptdictitem['abbrev'] == 'MSp': fulljoburl = deptdictitem['jobsurl']  # to get around session-dependent MSp pages
+        jobtitle = re.sub('([\w])', lambda x: x.groups()[0].upper(), job.contents, 1, flags=re.UNICODE)
+        jobdict = {'joburl': fulljoburl, 'jobtitle': jobtitle, 'dept': deptdictitem['abbrevcz'], 'datetime': timestamp}
+        jobslist.append(jobdict)
+    # print(jobslist)
+    print('Nalezeno ' + str(len(jobslist)) + ' pozic na ' + str(deptdictitem['abbrevcz']))
     return jobslist
