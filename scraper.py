@@ -82,10 +82,9 @@ minparameters = {
             {'name':'div', 'id':'main','class':None},
              {'name':'div','id':'content','class':None},
              {'name': 'a', 'id': None, 'class': None}],
-    'MZe' : [True,
+    'MZe' : [False,
             {'name':'div', 'id':'content','class':None},
              {'name':'div','id':'article','class':None},
-             {'name':'h2','id':None, 'class':'h'},
              {'name': 'a', 'id': None, 'class': None}],
     'MZP' : [False,
             {'name':'div', 'id':'content','class':None},  # based on current HTML
@@ -138,7 +137,7 @@ minparameters = {
 # Loop
 
 activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MSp2','MO','MD','MZV','CSSZ']
-# activedepts = ['MZe']
+# activedepts = ['CSSZ']
 
 jobsall = []
 for dept in activedepts:
