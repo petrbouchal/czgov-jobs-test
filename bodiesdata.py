@@ -111,6 +111,38 @@
             },
             "paginate" : false
         },
+    "MO" :
+        {
+            "fullname": "Ministerstvo obrany",
+            "abbrev" : "MO",
+            "abbrevcz": "MO",
+            "jobsurl": "http://www.mocr.army.cz/ministr-a-ministerstvo/kariera-vzdelavani/pracovni-prilezitosti/default.htm",
+            "jobtitledata" : {
+                "itemselect": "div.item div.txt-left div.info h2 a",
+                "additionaltitletext" : false
+            },
+            "separateurl": false,
+            "joburldata" : {
+                "itemselect":""
+            },
+            "paginate" : false
+        },
+    "MMR" :
+        {
+            "fullname": "Ministerstvo pro místní rozvoj",
+            "abbrev" : "MMR",
+            "abbrevcz": "MMR",
+            "jobsurl": "http://www.mmr.cz/cs/Pracovni-prilezitosti/",
+            "jobtitledata" : {
+                "itemselect": "div.rightPanel div.content div.VypisClanku div.Clanek div.ClanekOdkaz a",
+                "additionaltitletext" : false
+            },
+            "separateurl": false,
+            "joburldata" : {
+                "itemselect":""
+            },
+            "paginate" : false
+        },
     "MSMT" :
         {
             "fullname": "Ministerstvo školství",

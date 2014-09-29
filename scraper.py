@@ -13,8 +13,6 @@ __author__ = 'petrbouchal'
 
 # Basic infomration: name, proper abbreviation, top url and jobs url
 ministerstva = {
-    'MO' : ['MO','Ministerstvo obrany','http://www.mocr.army.cz','http://www.mocr.army.cz/ministr-a-ministerstvo/kariera-vzdelavani/pracovni-prilezitosti/default.htm'],
-    'MMR' : ['MMR','Ministerstvo pro místní rozvoj','http://www.mmr.cz','http://www.mmr.cz/cs/Pracovni-prilezitosti/'],
     'MZP' : ['MŽP','Ministerstvo životního prostředí','http://www.mzp.cz','http://mzp.cz/cz/volna_mista'],
     'MZV' : ['MZV','Ministerstvo zahraničních věcí','http://www.mzv.cz','http://www.mzv.cz/jnp/cz/o_ministerstvu/zamestnani/aktualni_nabidky_zamestnani/index.html'],
 }
@@ -22,10 +20,6 @@ ministerstva = {
 # Parameters for scraping job pages of each department
 # list of dicts: level1, level2, items, subitems + T/F whether going through subitems is needed
 minparameters = {
-    'MO' : [False,
-            {'name':'div', 'id':None,'class':'item'},
-             {'name':'div','id':None,'class':'txt-left'},
-             {'name': 'a', 'id': None, 'class': None}],
     'MZP' : [False,
             {'name':'div', 'id':'content','class':None},  # based on current HTML
              {'name':'div','id':None,'class':'contentMain'},  # based on current HTML
@@ -35,11 +29,6 @@ minparameters = {
              {'name':'div','id':None,'class':'article_content'},  # based on current HTML
              {'name': 'h2', 'id': None, 'class': 'article_title'},  # needs updating when info becomes available
              {'name': 'a', 'id': None, 'class': None}],  # needs updating when info becomes available
-    'MMR' : [True,
-            {'name':'div', 'id':None,'class':'rightPanel'},
-            {'name':'div','id':'content','class':True},
-            {'name':'div','class':'ClanekOdkaz','id':None},
-            {'name':'a','id':None,'class':None}],
 }
 
 import json
@@ -47,8 +36,8 @@ minparameters = json.load(open('./bodiesdata.py'))
 
 # Loop
 
-# activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MSp2','MO','MD','MZV','CSSZ']
-activedepts = ['MSMT']
+# activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MO','MD','MZV','CSSZ','FS','UP']
+activedepts = ['MMR']
 
 jobsallbodies = []
 for dept in activedepts:
