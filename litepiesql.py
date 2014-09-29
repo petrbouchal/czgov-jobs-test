@@ -35,6 +35,7 @@ class Database:
     def __init__(self, dbfile):
         self.conn = sqlite3.connect(dbfile)
         self.conn.row_factory = sqlite3.Row
+        self.conn.text_factory = str
 
     def insert(self, tablename, data):
         """
