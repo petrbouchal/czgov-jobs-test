@@ -1,6 +1,5 @@
 __author__ = 'petrbouchal'
 
-
 def open_checksnag(request):
     import urllib2
 
