@@ -268,7 +268,7 @@ paramsjson = {
             "fullname" : "Úřad práce",
             "abbrev" : "UP",
             "abbrevcz" : "ÚP",
-            "jobsurl" : "https://portal.mpsv.cz/upcr/vmnaup",
+            "jobsurl" : "http://portal.mpsv.cz/upcr/vmnaup",
             "jobtitledata" : {
                 "itemselect" : "div.region h4.nadpisRad",
                 "additionaltitletext" : False
