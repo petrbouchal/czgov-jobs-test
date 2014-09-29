@@ -12,7 +12,7 @@ now = datetime.now()
 __author__ = 'petrbouchal'
 
 import json
-minparameters = json.load(open('./bodiesdata.py'))
+minparameters = json.load(open('bodiesdata.py'))
 
 # Loop
 
