@@ -1,4 +1,6 @@
-{
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+paramsjson = {
     "MZe" :
         {
             "fullname": "Ministerstvo zemědělství",
@@ -7,13 +9,13 @@
             "jobsurl": "http://eagri.cz/public/web/mze/ministerstvo-zemedelstvi/volna-pracovni-mista/?pageSize=50",
             "jobtitledata" : {
                 "itemselect": "div#article h2.h a",
-                "additionaltitletext" : false
+                "additionaltitletext" : False
             },
-            "separateurl": false,
+            "separateurl": False,
             "joburldata" : {
                 "itemselect":""
             },
-            "paginate" : false
+            "paginate" : False
         },
     "MPO" :
         {
@@ -23,13 +25,13 @@
             "jobsurl": "http://www.mpo.cz/dokument61716.html",
             "jobtitledata" : {
                 "itemselect": "div#text ul a",
-                "additionaltitletext" : false
+                "additionaltitletext" : False
             },
-            "separateurl": false,
+            "separateurl": False,
             "joburldata" : {
                 "itemselect":""
             },
-            "paginate" : false
+            "paginate" : False
         },
     "MV" :
         {
@@ -39,14 +41,14 @@
             "jobsurl": "http://www.mvcr.cz/nabidka-mist.aspx",
             "jobtitledata" : {
                 "itemselect": "div#main div#content div#articleList div.article h3 a",
-                "additionaltitletext" : true,
+                "additionaltitletext" : True,
                 "additionaltextselect" : "div#main div#content div#articleList div.article p"
             },
-            "separateurl": false,
+            "separateurl": False,
             "joburldata" : {
                 "itemselect":""
             },
-            "paginate" : false
+            "paginate" : False
         },
     "UV" :
         {
@@ -56,13 +58,13 @@
             "jobsurl": "http://www.vlada.cz/scripts/detail.php?pgid=445",
             "jobtitledata" : {
                 "itemselect": "div#content div.content-main a",
-                "additionaltitletext" : false
+                "additionaltitletext" : False
             },
-            "separateurl": false,
+            "separateurl": False,
             "joburldata" : {
                 "itemselect":""
             },
-            "paginate" : false
+            "paginate" : False
         },
     "MD" :
         {
@@ -72,13 +74,13 @@
             "jobsurl": "http://www.mdcr.cz/cs/Nabidka-zamestnani/nz.htm",
             "jobtitledata" : {
                 "itemselect": "div.innermenubottom div.postings a",
-                "additionaltitletext" : false
+                "additionaltitletext" : False
             },
-            "separateurl": false,
+            "separateurl": False,
             "joburldata" : {
                 "itemselect":""
             },
-            "paginate" : false
+            "paginate" : False
         },
     "MF" :
         {
@@ -88,13 +90,13 @@
             "jobsurl": "http://www.mfcr.cz/cs/o-ministerstvu/pracovni-mista/volna-mista-mf",
             "jobtitledata" : {
                 "itemselect": "div.mainContent div.layoutFull a",
-                "additionaltitletext" : false
+                "additionaltitletext" : False
             },
-            "separateurl": false,
+            "separateurl": False,
             "joburldata" : {
                 "itemselect":""
             },
-            "paginate" : false
+            "paginate" : False
         },
     "MK" :
         {
@@ -104,13 +106,13 @@
             "jobsurl": "http://www.mkcr.cz/volna-mista/default.htm",
             "jobtitledata" : {
                 "itemselect": "div#main div#content a",
-                "additionaltitletext" : false
+                "additionaltitletext" : False
             },
-            "separateurl": false,
+            "separateurl": False,
             "joburldata" : {
                 "itemselect":""
             },
-            "paginate" : false
+            "paginate" : False
         },
     "MO" :
         {
@@ -120,13 +122,13 @@
             "jobsurl": "http://www.mocr.army.cz/ministr-a-ministerstvo/kariera-vzdelavani/pracovni-prilezitosti/default.htm",
             "jobtitledata" : {
                 "itemselect": "div.item div.txt-left div.info h2 a",
-                "additionaltitletext" : false
+                "additionaltitletext" : False
             },
-            "separateurl": false,
+            "separateurl": False,
             "joburldata" : {
                 "itemselect":""
             },
-            "paginate" : false
+            "paginate" : False
         },
     "MMR" :
         {
@@ -136,13 +138,13 @@
             "jobsurl": "http://www.mmr.cz/cs/Pracovni-prilezitosti/",
             "jobtitledata" : {
                 "itemselect": "div.rightPanel div.content div.VypisClanku div.Clanek div.ClanekOdkaz a",
-                "additionaltitletext" : false
+                "additionaltitletext" : False
             },
-            "separateurl": false,
+            "separateurl": False,
             "joburldata" : {
                 "itemselect":""
             },
-            "paginate" : false
+            "paginate" : False
         },
     "MSMT" :
         {
@@ -152,13 +154,13 @@
             "jobsurl": "http://www.msmt.cz/ministerstvo/volna-mista",
             "jobtitledata" : {
                 "itemselect": "div#article div.article-content h3 a",
-                "additionaltitletext" : false
+                "additionaltitletext" : False
             },
-            "separateurl": false,
+            "separateurl": False,
             "joburldata" : {
                 "itemselect":""
             },
-            "paginate" : false
+            "paginate" : False
         },
     "MZV" :
         {
@@ -168,13 +170,13 @@
             "jobsurl": "http://www.mzv.cz/jnp/cz/o_ministerstvu/zamestnani/aktualni_nabidky_zamestnani/index.html",
             "jobtitledata" : {
                 "itemselect": "div.article_list div.article_content h2.article_title a",
-                "additionaltitletext" : false
+                "additionaltitletext" : False
             },
-            "separateurl": false,
+            "separateurl": False,
             "joburldata" : {
                 "itemselect":""
             },
-            "paginate" : false
+            "paginate" : False
         },
     "MZP":
         {
@@ -184,13 +186,13 @@
             "jobsurl": "http://mzp.cz/cz/volna_mista",
             "jobtitledata": {
                 "itemselect": "div#content div.contentMain h2 a",
-                "additionaltitletext": false
+                "additionaltitletext": False
             },
-            "separateurl": false,
+            "separateurl": False,
             "joburldata": {
                 "itemselect": ""
             },
-            "paginate": false
+            "paginate": False
         },
 
     "MPSV" :
@@ -201,13 +203,13 @@
             "jobsurl": "http://www.mpsv.cz/cs/70",
             "jobtitledata" : {
                 "itemselect": "div#articlebody div#toc ul li a",
-                "additionaltitletext" : false
+                "additionaltitletext" : False
             },
-            "separateurl": false,
+            "separateurl": False,
             "joburldata" : {
                 "itemselect":""
             },
-            "paginate" : false,
+            "paginate" : False,
             "paginatelinkselect" : ""
         },
     "CSSZ" :
@@ -218,13 +220,13 @@
             "jobsurl": "http://www.cssz.cz/cz/o-cssz/volna-mista/",
             "jobtitledata" : {
                 "itemselect": "div#main-content div.article ul li a",
-                "additionaltitletext" : false
+                "additionaltitletext" : False
             },
-            "separateurl": false,
+            "separateurl": False,
             "joburldata" : {
                 "itemselect":""
             },
-            "paginate" : false,
+            "paginate" : False,
             "paginatelinkselect" : ""
         },
     "MZd" :
@@ -235,13 +237,13 @@
             "jobsurl": "http://www.mzcr.cz/obsah/pracovni-prilezitosti_838_1.html",
             "jobtitledata" : {
                 "itemselect": "div#main div#middle-column-content div.uvod-clanek h3 a",
-                "additionaltitletext" : false
+                "additionaltitletext" : False
             },
-            "separateurl": false,
+            "separateurl": False,
             "joburldata" : {
                 "itemselect":""
             },
-            "paginate" : false,
+            "paginate" : False,
             "paginatelinkselect" : ""
         },
     "MSp" :
@@ -252,13 +254,13 @@
             "jobsurl": "http://portal.justice.cz/Justice2/MS/ms.aspx?j=33&o=23&k=5956",
             "jobtitledata" : {
                 "itemselect": "div.news-list.clearfix div.item.main div.item.full h2.heading a",
-                "additionaltitletext" : false
+                "additionaltitletext" : False
             },
-            "separateurl": false,
+            "separateurl": False,
             "joburldata" : {
                 "itemselect":""
             },
-            "paginate" : true,
+            "paginate" : True,
             "paginatelinkselect" : "div.pages a.next"
         },
     "UP" :
@@ -269,13 +271,13 @@
             "jobsurl" : "https://portal.mpsv.cz/upcr/vmnaup",
             "jobtitledata" : {
                 "itemselect" : "div.region h4.nadpisRad",
-                "additionaltitletext" : false
+                "additionaltitletext" : False
             },
-            "separateurl" : true,
+            "separateurl" : True,
             "joburldata" : {
                 "itemselect" : "div.region table + a"
             },
-            "paginate" : false
+            "paginate" : False
         },
     "FS" :
         {
@@ -285,14 +287,14 @@
             "jobsurl" : "http://www.financnisprava.cz/cs/financni-sprava/volna-pracovni-mista",
             "jobtitledata" : {
                 "itemselect" : "div.attachments article header h3 a",
-                "additionaltitletext" : true,
+                "additionaltitletext" : True,
                 "additionaltextselect" : "div.attachments article header p.subtitle"
             },
-            "separateurl" : false,
+            "separateurl" : False,
             "joburldata" : {
                 "itemselect" : ""
             },
-            "paginate" : true,
+            "paginate" : True,
             "paginatelinkselect" : "div.nabidkaPrace div.pagination a[rel=next]"
         }
 }
