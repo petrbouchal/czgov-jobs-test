@@ -4,7 +4,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
-from lib_minscrapers import scrape
+from lib_minscrapers import scrapejobs
 
 __author__ = 'petrbouchal'
 
@@ -93,9 +93,9 @@ for dept in activedepts:
     depturl = ministerstva[dept][3]
     deptpars = minparameters[dept]
     if deptpars[0]==False:
-        jobsall = jobsall + scrape(depturl,deptpars[1], deptpars[2])
+        jobsall = jobsall + scrapejobs(depturl,deptpars[1], deptpars[2])
     else:
-        jobsall = jobsall + scrape(depturl,deptpars[1], deptpars[2],
+        jobsall = jobsall + scrapejobs(depturl,deptpars[1], deptpars[2],
                deptpars[3],deptpars[4],dosubitems=True)
 print(len(jobsall))
 print(jobsall)

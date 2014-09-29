@@ -4,7 +4,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
-from lib_minscrapers import scrape
+from lib_minscrapers import scrapejobs, scrapepages
 from datetime import datetime
 
 now = datetime.now()
@@ -130,11 +130,11 @@ minparameters = json.load(open('./bodiesdata.py'))
 # activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MSp2','MO','MD','MZV','CSSZ']
 activedepts = ['FS']
 
-jobsall = []
+jobsallbodies = []
 for dept in activedepts:
     # print(dept)
-    jobsall = jobsall + scrape(now, minparameters[dept])
-print('Celkem nalezeno pozic: ', len(jobsall))
+    jobsallbodies = jobsallbodies + scrapepages(now, minparameters[dept])
+print('Celkem nalezeno pozic: ', len(jobsallbodies))
 from pprint import pprint
 # pprint(jobsall)
 
@@ -152,6 +152,6 @@ db.commit()
 db.close()
 
 db = litepiesql.Database('data.sqlite')
-for row in jobsall:
+for row in jobsallbodies:
     db.insert('data',row)
     print(row)

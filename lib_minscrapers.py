@@ -3,7 +3,9 @@ __author__ = 'petrbouchal'
 
 def open_checksnag(request):
     import urllib2
-    request = urllib2.Request(url=request, headers={'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'})
+
+    request = urllib2.Request(url=request, headers={
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'})
     try:
         response = urllib2.urlopen(request)
     except urllib2.HTTPError as e:
@@ -25,7 +27,7 @@ def open_checksnag(request):
 
 
 def scrape_old(timestamp, deptabb, url, level1, level2, items={'name': 'a', 'id': None, 'class': None},
-           subitems={'name': 'a', 'id': None, 'class': None}, dosubitems=False):
+               subitems={'name': 'a', 'id': None, 'class': None}, dosubitems=False):
     from bs4 import BeautifulSoup
 
     print(url)
@@ -86,12 +88,13 @@ def scrape_old(timestamp, deptabb, url, level1, level2, items={'name': 'a', 'id'
     return jobslist
 
 
-def scrape(timestamp, bodydata):
+def scrapejobs(timestamp, bodydata):
     from bs4 import BeautifulSoup
 
     print(bodydata['jobsurl'])
     import urlparse
     import re
+
     page = open_checksnag(bodydata['jobsurl'])
     page = page.read()
     # print(page)
@@ -104,13 +107,13 @@ def scrape(timestamp, bodydata):
     # Add href attribute if URL was collected separately
     if bodydata['separateurl']:
         joburls = page.select(bodydata['joburldata']['itemselect'])
-        for count in range(0,len(jobs),1):
+        for count in range(0, len(jobs), 1):
             jobs[count].attrs['href'] = joburls[count]['href']
 
     # Add additional title text if it is to be collected
     if bodydata['jobtitledata']['additionaltitletext']:
         additionaltexts = page.select(bodydata['jobtitledata']['additionaltextselect'])
-        for count in range(0,len(jobs),1):
+        for count in range(0, len(jobs), 1):
             jobs[count].contents = jobs[count].contents[0] + ', ' + additionaltexts[count].contents[0]
     else:
         for job in jobs: job.contents = job.contents[0]
@@ -126,5 +129,36 @@ def scrape(timestamp, bodydata):
         jobdict = {'joburl': fulljoburl, 'jobtitle': jobtitle, 'dept': bodydata['abbrevcz'], 'datetime': timestamp}
         jobslist.append(jobdict)
     # print(jobslist)
-    print('Nalezeno ' + str(len(jobslist)) + ' pozic na ' + str(bodydata['abbrevcz']))
     return jobslist
+
+
+def scrapepages(timestamp, bodydata):
+    from bs4 import BeautifulSoup
+
+    jobsurlslist = [bodydata['jobsurl']]
+    jobspageurl_iter = bodydata['jobsurl']
+
+    def getnextlink(bodydata, iterfirsturl):
+        iterpage = open_checksnag(iterfirsturl)
+        iterpage = iterpage.read()
+        itersoup = BeautifulSoup(iterpage)
+        nextlink = itersoup.select(bodydata['paginatelinkselect'])
+        if len(nextlink) == 0:
+            return False
+        else:
+            return nextlink[0]['href']
+
+    while (getnextlink(bodydata, jobspageurl_iter)):
+        jobsurlslist.append(getnextlink(bodydata, jobspageurl_iter))
+        jobspageurl_iter = getnextlink(bodydata, jobspageurl_iter)
+
+    alljobslist = []
+    for jobspageurl in jobsurlslist:
+        newbodydata = bodydata
+        newbodydata['jobsurl'] = jobspageurl
+        thispagejoblist = scrapejobs(timestamp, newbodydata)
+        alljobslist = alljobslist + thispagejoblist
+
+    print('Nalezeno ' + str(len(alljobslist)) + ' pozic na ' + str(bodydata['abbrevcz']))
+
+    return alljobslist

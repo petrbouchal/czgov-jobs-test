@@ -43,7 +43,9 @@
             "separateurl" : false,
             "joburldata" : {
                 "itemselect" : ""
-            }
+            },
+            "paginate" : true,
+            "paginatelinkselect" : "div.nabidkaPrace div.pagination a[rel=next]"
         }
 }
 
