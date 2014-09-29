@@ -3,6 +3,7 @@ from __future__ import unicode_literals, print_function, division
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import sys
+
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
@@ -16,7 +17,8 @@ __author__ = 'petrbouchal'
 from bodiesdata import paramsjson as minparameters
 # Loop
 
-activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MO','MD','MZV','CSSZ','FS','UP']
+activedepts = ['MPO', 'MPSV', 'UV', 'MZd', 'MSMT', 'MF', 'MMR', 'MV', 'MZe', 'MK', 'MSp', 'MO', 'MD', 'MZV', 'CSSZ',
+               'FS', 'UP']
 # activedepts = ['MZP']
 
 jobsallbodies = []
@@ -42,5 +44,5 @@ db.close()
 
 db = litepiesql.Database('data.sqlite')
 for row in jobsallbodies:
-    db.insert('data',row)
-    print(row)
+    db.insert('data', row)
+    # print(row)
