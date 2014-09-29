@@ -13,9 +13,6 @@ __author__ = 'petrbouchal'
 
 # Basic infomration: name, proper abbreviation, top url and jobs url
 ministerstva = {
-    'MF' : ['MFČR','Ministerstvo financí','http://www.mfcr.cz','http://www.mfcr.cz/cs/o-ministerstvu/pracovni-mista/volna-mista-mf'],
-    'MK' : ['MKČR','Ministerstvo kultury','http://www.mkcr.cz','http://www.mkcr.cz/volna-mista/default.htm'],
-    'MSMT' : ['MŠMT','Ministerstvo školství','http://www.msmt.cz','http://www.msmt.cz/ministerstvo/volna-mista'],
     'MO' : ['MO','Ministerstvo obrany','http://www.mocr.army.cz','http://www.mocr.army.cz/ministr-a-ministerstvo/kariera-vzdelavani/pracovni-prilezitosti/default.htm'],
     'MMR' : ['MMR','Ministerstvo pro místní rozvoj','http://www.mmr.cz','http://www.mmr.cz/cs/Pracovni-prilezitosti/'],
     'MZP' : ['MŽP','Ministerstvo životního prostředí','http://www.mzp.cz','http://mzp.cz/cz/volna_mista'],
@@ -25,25 +22,9 @@ ministerstva = {
 # Parameters for scraping job pages of each department
 # list of dicts: level1, level2, items, subitems + T/F whether going through subitems is needed
 minparameters = {
-    'MD' : [False,
-            {'name':'div', 'id':None,'class':'innermenubottom'},
-             {'name':'div','id':None,'class':'postings'},
-             {'name': 'a', 'id': None, 'class': None}],
-    'MF' : [False,
-            {'name':'div', 'id':None,'class':'mainContent'},
-             {'name':'div','id':None,'class':'layoutFull'},
-             {'name': 'a', 'id': None, 'class': None}],
     'MO' : [False,
             {'name':'div', 'id':None,'class':'item'},
              {'name':'div','id':None,'class':'txt-left'},
-             {'name': 'a', 'id': None, 'class': None}],
-    'MSMT' : [False,
-            {'name':'div', 'id':'article','class':True},
-             {'name':'div','id':None,'class':'article-content'},
-             {'name': 'a', 'id': None, 'class': None}],
-    'MK' : [False,
-            {'name':'div', 'id':'main','class':None},
-             {'name':'div','id':'content','class':None},
              {'name': 'a', 'id': None, 'class': None}],
     'MZP' : [False,
             {'name':'div', 'id':'content','class':None},  # based on current HTML
@@ -67,7 +48,7 @@ minparameters = json.load(open('./bodiesdata.py'))
 # Loop
 
 # activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MSp2','MO','MD','MZV','CSSZ']
-activedepts = ['MD']
+activedepts = ['MSMT']
 
 jobsallbodies = []
 for dept in activedepts:

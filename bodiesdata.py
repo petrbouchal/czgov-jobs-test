@@ -79,6 +79,54 @@
             },
             "paginate" : false
         },
+    "MF" :
+        {
+            "fullname": "Ministerstvo financí",
+            "abbrev" : "MF",
+            "abbrevcz": "MF",
+            "jobsurl": "http://www.mfcr.cz/cs/o-ministerstvu/pracovni-mista/volna-mista-mf",
+            "jobtitledata" : {
+                "itemselect": "div.mainContent div.layoutFull a",
+                "additionaltitletext" : false
+            },
+            "separateurl": false,
+            "joburldata" : {
+                "itemselect":""
+            },
+            "paginate" : false
+        },
+    "MK" :
+        {
+            "fullname": "Ministerstvo kultury",
+            "abbrev" : "MK",
+            "abbrevcz": "MK",
+            "jobsurl": "http://www.mkcr.cz/volna-mista/default.htm",
+            "jobtitledata" : {
+                "itemselect": "div#main div#content a",
+                "additionaltitletext" : false
+            },
+            "separateurl": false,
+            "joburldata" : {
+                "itemselect":""
+            },
+            "paginate" : false
+        },
+    "MSMT" :
+        {
+            "fullname": "Ministerstvo školství",
+            "abbrev" : "MSMT",
+            "abbrevcz": "MŠMT",
+            "jobsurl": "http://www.msmt.cz/ministerstvo/volna-mista",
+            "jobtitledata" : {
+                "itemselect": "div#article div.article-content h3 a",
+                "additionaltitletext" : false
+            },
+            "separateurl": false,
+            "joburldata" : {
+                "itemselect":""
+            },
+            "paginate" : false
+        },
     "MPSV" :
         {
             "fullname": "Ministerstvo práce a sociálních věcí",
