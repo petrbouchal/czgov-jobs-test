@@ -6,3 +6,5 @@ data.sqlite
 .idea/workspace.xml
 
 .idea/scopes/scope_settings.xml
+
+*.pyc
