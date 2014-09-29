@@ -31,6 +31,22 @@
             },
             "paginate" : false
         },
+    "UV" :
+        {
+            "fullname": "Úřad vlády",
+            "abbrev" : "UV",
+            "abbrevcz": "ÚV",
+            "jobsurl": "http://www.vlada.cz/scripts/detail.php?pgid=445",
+            "jobtitledata" : {
+                "itemselect": "div#content div.content-main a",
+                "additionaltitletext" : false,
+            },
+            "separateurl": false,
+            "joburldata" : {
+                "itemselect":""
+            },
+            "paginate" : false
+        },
     "MPSV" :
         {
             "fullname": "Ministerstvo práce a sociálních věcí",
@@ -39,6 +55,23 @@
             "jobsurl": "http://www.mpsv.cz/cs/70",
             "jobtitledata" : {
                 "itemselect": "div#articlebody div#toc ul li a",
+                "additionaltitletext" : false
+            },
+            "separateurl": false,
+            "joburldata" : {
+                "itemselect":""
+            },
+            "paginate" : false,
+            "paginatelinkselect" : ""
+        },
+    "CSSZ" :
+        {
+            "fullname": "Česká správa sociálního zabezpečení",
+            "abbrev" : "CSSZ",
+            "abbrevcz": "ČSSZ",
+            "jobsurl": "http://www.cssz.cz/cz/o-cssz/volna-mista/",
+            "jobtitledata" : {
+                "itemselect": "div#mainContent.exclusive div.article ul li a",
                 "additionaltitletext" : false
             },
             "separateurl": false,
@@ -95,6 +128,7 @@
             "joburldata" : {
                 "itemselect" : ""
             },
+            "paginate" : true,
             "paginatelinkselect" : "div.nabidkaPrace div.pagination a[rel=next]"
         }
 }

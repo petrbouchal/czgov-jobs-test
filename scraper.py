@@ -13,7 +13,6 @@ __author__ = 'petrbouchal'
 
 # Basic infomration: name, proper abbreviation, top url and jobs url
 ministerstva = {
-    'UV' : ['ÚV','Úřad vlády','http://www.vlada.cz','http://www.vlada.cz/scripts/detail.php?pgid=445'],
     'MF' : ['MFČR','Ministerstvo financí','http://www.mfcr.cz','http://www.mfcr.cz/cs/o-ministerstvu/pracovni-mista/volna-mista-mf'],
     'MK' : ['MKČR','Ministerstvo kultury','http://www.mkcr.cz','http://www.mkcr.cz/volna-mista/default.htm'],
     'MSMT' : ['MŠMT','Ministerstvo školství','http://www.msmt.cz','http://www.msmt.cz/ministerstvo/volna-mista'],
@@ -24,7 +23,6 @@ ministerstva = {
     'MZP' : ['MŽP','Ministerstvo životního prostředí','http://www.mzp.cz','http://mzp.cz/cz/volna_mista'],
     'MZV' : ['MZV','Ministerstvo zahraničních věcí','http://www.mzv.cz','http://www.mzv.cz/jnp/cz/o_ministerstvu/zamestnani/aktualni_nabidky_zamestnani/index.html'],
     'MPO' : ['MPO','Ministerstvo průmyslu a obchodu','http://www.mpo.cz','http://www.mpo.cz/dokument61716.html'],
-    'CSSZ' : ['ČSSZ','Česká správa sociálního zabezpečení','http://www.cssz.cz','http://www.cssz.cz/cz/o-cssz/volna-mista/'],
 }
 
 # Parameters for scraping job pages of each department
@@ -34,10 +32,6 @@ minparameters = {
              {'name':'div', 'id':'text','class':None},
              {'name':'ul','id':None,'class':None},
              {'name':'a','id':None,'class':None}],
-    'UV' : [False,
-             {'name':'div', 'id':'content','class':None},
-             {'name':'div','id':None,'class':'content-main'},
-             {'name': 'a', 'id': None, 'class': None}],
     'MZd' : [True,
              {'name':'div', 'id':'main','class':None},
              {'name':'div','id':'middle-column-content','class':'clearfix'},
@@ -77,11 +71,6 @@ minparameters = {
             {'name':'div','id':'content','class':True},
             {'name':'div','class':'ClanekOdkaz','id':None},
             {'name':'a','id':None,'class':None}],
-    'CSSZ' : [True,
-            {'name':'div', 'id':'main-content','class':'exclusive'},
-            {'name':'div','id':None,'class':'article'},
-            {'name':'li','class':None,'id':None},
-            {'name':'a','class':None,'id':None}],
 }
 
 import json
@@ -90,7 +79,7 @@ minparameters = json.load(open('./bodiesdata.py'))
 # Loop
 
 # activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MSp2','MO','MD','MZV','CSSZ']
-activedepts = ['MV']
+activedepts = ['UV','CSSZ']
 
 jobsallbodies = []
 for dept in activedepts:
