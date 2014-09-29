@@ -14,6 +14,23 @@
                 "itemselect":""
             }
         },
+    "MV" :
+        {
+            "fullname": "Ministerstvo vnitra",
+            "abbrev" : "MV",
+            "abbrevcz": "MV",
+            "jobsurl": "http://www.mvcr.cz/nabidka-mist.aspx",
+            "jobtitledata" : {
+                "itemselect": "div#main div#content div#articleList div.article h3 a",
+                "additionaltitletext" : true,
+                "additionaltextselect" : "div#main div#content div#articleList div.article p"
+            },
+            "separateurl": false,
+            "joburldata" : {
+                "itemselect":""
+            },
+            "paginate" : false
+        },
     "MPSV" :
         {
             "fullname": "Ministerstvo práce a sociálních věcí",
