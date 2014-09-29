@@ -12,7 +12,8 @@
             "separateurl": false,
             "joburldata" : {
                 "itemselect":""
-            }
+            },
+            "paginate" : false
         },
     "MPO" :
         {
@@ -159,6 +160,39 @@
             },
             "paginate" : false
         },
+    "MZV" :
+        {
+            "fullname": "Ministerstvo zahraničních věcí",
+            "abbrev" : "MZV",
+            "abbrevcz": "MZV",
+            "jobsurl": "http://www.mzv.cz/jnp/cz/o_ministerstvu/zamestnani/aktualni_nabidky_zamestnani/index.html",
+            "jobtitledata" : {
+                "itemselect": "div.article_list div.article_content h2.article_title a",
+                "additionaltitletext" : false
+            },
+            "separateurl": false,
+            "joburldata" : {
+                "itemselect":""
+            },
+            "paginate" : false
+        },
+    "MZP":
+        {
+            "fullname": "Ministerstvo životního prostředí",
+            "abbrev": "MZP",
+            "abbrevcz": "MŽP",
+            "jobsurl": "http://mzp.cz/cz/volna_mista",
+            "jobtitledata": {
+                "itemselect": "div#content div.contentMain h2 a",
+                "additionaltitletext": false
+            },
+            "separateurl": false,
+            "joburldata": {
+                "itemselect": ""
+            },
+            "paginate": false
+        },
+
     "MPSV" :
         {
             "fullname": "Ministerstvo práce a sociálních věcí",
@@ -240,7 +274,8 @@
             "separateurl" : true,
             "joburldata" : {
                 "itemselect" : "div.region table + a"
-            }
+            },
+            "paginate" : false
         },
     "FS" :
         {
