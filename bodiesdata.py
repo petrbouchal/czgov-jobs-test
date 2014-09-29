@@ -14,6 +14,22 @@
                 "itemselect":""
             }
         },
+    "MPO" :
+        {
+            "fullname": "Ministerstvo průmyslu a obchodu",
+            "abbrev" : "MPO",
+            "abbrevcz": "MPO",
+            "jobsurl": "http://www.mpo.cz/dokument61716.html",
+            "jobtitledata" : {
+                "itemselect": "div#text ul a",
+                "additionaltitletext" : false
+            },
+            "separateurl": false,
+            "joburldata" : {
+                "itemselect":""
+            },
+            "paginate" : false
+        },
     "MV" :
         {
             "fullname": "Ministerstvo vnitra",
@@ -39,7 +55,7 @@
             "jobsurl": "http://www.vlada.cz/scripts/detail.php?pgid=445",
             "jobtitledata" : {
                 "itemselect": "div#content div.content-main a",
-                "additionaltitletext" : false,
+                "additionaltitletext" : false
             },
             "separateurl": false,
             "joburldata" : {
@@ -71,7 +87,24 @@
             "abbrevcz": "ČSSZ",
             "jobsurl": "http://www.cssz.cz/cz/o-cssz/volna-mista/",
             "jobtitledata" : {
-                "itemselect": "div#mainContent.exclusive div.article ul li a",
+                "itemselect": "div#main-content div.article ul li a",
+                "additionaltitletext" : false
+            },
+            "separateurl": false,
+            "joburldata" : {
+                "itemselect":""
+            },
+            "paginate" : false,
+            "paginatelinkselect" : ""
+        },
+    "MZd" :
+        {
+            "fullname": "Ministerstvo zdravotnictví",
+            "abbrev" : "MZd",
+            "abbrevcz": "MZd",
+            "jobsurl": "http://www.mzcr.cz/obsah/pracovni-prilezitosti_838_1.html",
+            "jobtitledata" : {
+                "itemselect": "div#main div#middle-column-content div.uvod-clanek h3 a",
                 "additionaltitletext" : false
             },
             "separateurl": false,
