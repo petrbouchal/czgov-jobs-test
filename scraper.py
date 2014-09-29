@@ -16,7 +16,6 @@ ministerstva = {
     'MF' : ['MFČR','Ministerstvo financí','http://www.mfcr.cz','http://www.mfcr.cz/cs/o-ministerstvu/pracovni-mista/volna-mista-mf'],
     'MK' : ['MKČR','Ministerstvo kultury','http://www.mkcr.cz','http://www.mkcr.cz/volna-mista/default.htm'],
     'MSMT' : ['MŠMT','Ministerstvo školství','http://www.msmt.cz','http://www.msmt.cz/ministerstvo/volna-mista'],
-    'MD' : ['MDČR','Ministerstvo dopravy','http://www.mdcr.cz','http://www.mdcr.cz/cs/Nabidka-zamestnani/nz.htm'],
     'MO' : ['MO','Ministerstvo obrany','http://www.mocr.army.cz','http://www.mocr.army.cz/ministr-a-ministerstvo/kariera-vzdelavani/pracovni-prilezitosti/default.htm'],
     'MMR' : ['MMR','Ministerstvo pro místní rozvoj','http://www.mmr.cz','http://www.mmr.cz/cs/Pracovni-prilezitosti/'],
     'MZP' : ['MŽP','Ministerstvo životního prostředí','http://www.mzp.cz','http://mzp.cz/cz/volna_mista'],
@@ -26,11 +25,6 @@ ministerstva = {
 # Parameters for scraping job pages of each department
 # list of dicts: level1, level2, items, subitems + T/F whether going through subitems is needed
 minparameters = {
-    'MZd' : [True,
-             {'name':'div', 'id':'main','class':None},
-             {'name':'div','id':'middle-column-content','class':'clearfix'},
-             {'name':'div','id':None,'class':'uvod-clanek'},
-             {'name':'a', 'id':True, 'class':None}],
     'MD' : [False,
             {'name':'div', 'id':None,'class':'innermenubottom'},
              {'name':'div','id':None,'class':'postings'},
@@ -73,7 +67,7 @@ minparameters = json.load(open('./bodiesdata.py'))
 # Loop
 
 # activedepts = ['MPO','MPSV','UV','MZd','MSMT','MF','MMR','MV','MZe','MK','MSp','MSp2','MO','MD','MZV','CSSZ']
-activedepts = ['UV','CSSZ','MPO','MZd']
+activedepts = ['MD']
 
 jobsallbodies = []
 for dept in activedepts:

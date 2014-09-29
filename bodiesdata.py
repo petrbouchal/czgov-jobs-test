@@ -63,6 +63,22 @@
             },
             "paginate" : false
         },
+    "MD" :
+        {
+            "fullname": "Ministerstvo dopravy",
+            "abbrev" : "MD",
+            "abbrevcz": "MD",
+            "jobsurl": "http://www.mdcr.cz/cs/Nabidka-zamestnani/nz.htm",
+            "jobtitledata" : {
+                "itemselect": "div.innermenubottom div.postings a",
+                "additionaltitletext" : false
+            },
+            "separateurl": false,
+            "joburldata" : {
+                "itemselect":""
+            },
+            "paginate" : false
+        },
     "MPSV" :
         {
             "fullname": "Ministerstvo práce a sociálních věcí",
