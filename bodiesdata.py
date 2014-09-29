@@ -14,6 +14,40 @@
                 "itemselect":""
             }
         },
+    "MPSV" :
+        {
+            "fullname": "Ministerstvo práce a sociálních věcí",
+            "abbrev" : "MPSV",
+            "abbrevcz": "MPSV",
+            "jobsurl": "http://www.mpsv.cz/cs/70",
+            "jobtitledata" : {
+                "itemselect": "div#articlebody div#toc ul li a",
+                "additionaltitletext" : false
+            },
+            "separateurl": false,
+            "joburldata" : {
+                "itemselect":""
+            },
+            "paginate" : false,
+            "paginatelinkselect" : ""
+        },
+    "MSp" :
+        {
+            "fullname": "Ministerstvo spravedlnosti",
+            "abbrev" : "MSp",
+            "abbrevcz": "MSp",
+            "jobsurl": "http://portal.justice.cz/Justice2/MS/ms.aspx?j=33&o=23&k=5956",
+            "jobtitledata" : {
+                "itemselect": "div.news-list.clearfix div.item.main div.item.full h2.heading a",
+                "additionaltitletext" : false
+            },
+            "separateurl": false,
+            "joburldata" : {
+                "itemselect":""
+            },
+            "paginate" : true,
+            "paginatelinkselect" : "div.pages a.next"
+        },
     "UP" :
         {
             "fullname" : "Úřad práce",
@@ -44,7 +78,6 @@
             "joburldata" : {
                 "itemselect" : ""
             },
-            "paginate" : true,
             "paginatelinkselect" : "div.nabidkaPrace div.pagination a[rel=next]"
         }
 }

@@ -88,6 +88,16 @@ def scrape_old(timestamp, deptabb, url, level1, level2, items={'name': 'a', 'id'
     return jobslist
 
 
+def completeurl(fullurl, partialurl):
+    from urllib2 import urlparse
+    parsed_jobsurl = urlparse.urlparse(fullurl)
+    parsed_joburl = urlparse.urlparse(partialurl)
+    fulljoburl = urlparse.urlunparse([parsed_jobsurl.scheme, parsed_jobsurl.netloc,
+                                      parsed_joburl.path, parsed_joburl.params, parsed_joburl.query,
+                                      parsed_joburl.fragment])
+    return fulljoburl
+
+
 def scrapejobs(timestamp, bodydata):
     from bs4 import BeautifulSoup
 
@@ -119,11 +129,7 @@ def scrapejobs(timestamp, bodydata):
         for job in jobs: job.contents = job.contents[0]
 
     for job in jobs:
-        parsed_jobsurl = urlparse.urlparse(bodydata['jobsurl'])
-        parsed_joburl = urlparse.urlparse(job['href'])
-        fulljoburl = urlparse.urlunparse([parsed_jobsurl.scheme, parsed_jobsurl.netloc,
-                                          parsed_joburl.path, parsed_joburl.params, parsed_joburl.query,
-                                          parsed_joburl.fragment])
+        fulljoburl = completeurl(bodydata['jobsurl'], job['href'])
         if bodydata['abbrev'] == 'MSp': fulljoburl = bodydata['jobsurl']  # to get around session-dependent MSp pages
         jobtitle = re.sub('([\w])', lambda x: x.groups()[0].upper(), job.contents, 1, flags=re.UNICODE)
         jobdict = {'joburl': fulljoburl, 'jobtitle': jobtitle, 'dept': bodydata['abbrevcz'], 'datetime': timestamp}
@@ -139,14 +145,18 @@ def scrapepages(timestamp, bodydata):
     jobspageurl_iter = bodydata['jobsurl']
 
     def getnextlink(bodydata, iterfirsturl):
-        iterpage = open_checksnag(iterfirsturl)
-        iterpage = iterpage.read()
-        itersoup = BeautifulSoup(iterpage)
-        nextlink = itersoup.select(bodydata['paginatelinkselect'])
-        if len(nextlink) == 0:
+        if(bodydata['paginate'] == False):
             return False
         else:
-            return nextlink[0]['href']
+            iterpage = open_checksnag(iterfirsturl)
+            iterpage = iterpage.read()
+            itersoup = BeautifulSoup(iterpage)
+            nextlink = itersoup.select(bodydata['paginatelinkselect'])
+            if len(nextlink) == 0:
+                return False
+            else:
+                nextlink_final = completeurl(bodydata['jobsurl'],nextlink[0]['href'])
+                return nextlink_final
 
     while (getnextlink(bodydata, jobspageurl_iter)):
         jobsurlslist.append(getnextlink(bodydata, jobspageurl_iter))
