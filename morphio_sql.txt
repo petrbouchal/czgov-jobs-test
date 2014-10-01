@@ -1,1 +1,0 @@
-select dept as title, jobtitle as content, joburl as link, datetime as date from 'data'  where date = (select max(datetime) from data) order by title
