@@ -14,7 +14,7 @@
 - [ ] add MZP (waiting for job to appear to learn from)
 - [x] add CSSZ (in progress: should be easy)
 - [ ] add NKU (should be easy)
-- [ ] add FU/FS (could use new functionality - pagination and multi-element titles)
+- [x] add FU/FS (could use new functionality - pagination and multi-element titles)
 - [ ] add UP (requires use new functionality - different-element title and url)
 - [ ] add UOOZ (requires new functionality - link-less jobs)
 - [ ] add CUZK
@@ -24,15 +24,15 @@
 ## To do - technical
 
 - [ ] programmatically allow for link-less jobs (linking only to general jobs page)
-- [ ] add fallback for when nothing is found
-- [ ] implement getting title and url from different elements
-- [ ] implement getting title from multiple elements
-- [ ] implement programmatic pagination
+- [x] add fallback for when nothing is found
+- [x] implement getting title and url from different elements
+- [x] implement getting title from multiple elements
+- [x] implement programmatic pagination
 - [ ] add error handling
-- [ ] rewrite scraper routine to take whole dict item as input and deal with the rest
-- [ ] merge the two input dictionaries
+- [x] rewrite scraper routine to take whole dict item as input and deal with the rest
+- [x] merge the two input dictionaries
 - [ ] document data model for input parameters
-- [ ] place input data into external json files
+- [x] place input data into external json files
 - [ ] scope out list of bodies
 - [ ] save first-seen and last-seen dates + implement updating instead of duplication
 - [x] add fallback for when page not found (e.g. second page of results)
