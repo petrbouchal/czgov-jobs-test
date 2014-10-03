@@ -43,4 +43,4 @@ db.close()
 db = litepiesql.Database('data.sqlite')
 for row in jobsallbodies:
     db.insert('data', row)
-    # print(row)
+    print(row)
