@@ -5,42 +5,58 @@ import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
-from lib_minscrapers import scrapejobs, scrapepages
-from datetime import datetime
-
-now = datetime.now()
-
-__author__ = 'petrbouchal'
-
-from bodiesdata import paramsjson as minparameters
-# Loop
-
-activedepts = ['MPO', 'MPSV', 'UV', 'MZd', 'MSMT', 'MF', 'MMR', 'MV', 'MZe', 'MK', 'MSp', 'MO', 'MD', 'MZV', 'CSSZ',
-               'FS','UP']
-# activedepts = ['UP']
-
-jobsallbodies = []
-for dept in activedepts:
-    # print(dept)
-    jobsallbodies = jobsallbodies + scrapepages(now, minparameters[dept])
-print('Celkem nalezeno pozic: ', len(jobsallbodies))
-from pprint import pprint
-# pprint(jobsall)
-
-import litepiesql
 import sqlite3
 
 db = sqlite3.connect('data.sqlite')
 cursor = db.cursor()
 
-if len(cursor.execute("""SELECT name FROM sqlite_master WHERE type='table' AND name='data';""").fetchall()) == 0:
-    cursor.execute("""CREATE TABLE data
-                        (jobtitle, joburl, dept, datetime timestamp)
-                    """)
-db.commit()
-db.close()
+selected0 = cursor.execute("""select * from data""")
 
-db = litepiesql.Database('data.sqlite')
-for row in jobsallbodies:
-    db.insert('data', row)
+print(len(selected0.fetchall()))
+
+cursor.execute("""
+                create table data2 as select dept, jobtitle, joburl, max(datetime) as lastseen, min(datetime) as firstseen from data group by joburl, jobtitle;
+               """)
+cursor.execute("""
+                alter table data2 add column seenfor;
+               """)
+cursor.execute("""
+                alter table data2 add column live;
+               """)
+cursor.execute("""
+                alter table data2 add column latest;
+               """)
+cursor.execute("""
+                drop table data;
+               """)
+cursor.execute("""
+                alter table data2 rename to data;
+               """)
+db.commit()
+
+selected = cursor.execute("""select * from data""")
+
+print(len(selected.fetchall()))
+
+for row in selected.fetchall():
     print(row)
+
+cursor.execute("""
+                update data set seenfor=round((strftime('%s',lastseen)-strftime('%s',firstseen))/60/60/12);
+               """)
+cursor.execute("""
+                update data set live=(lastseen==(select max(lastseen) from data));
+               """)
+cursor.execute("""
+                update data set latest=(seenfor==0 and live==1);
+               """)
+db.commit()
+
+selected2 = cursor.execute("""select * from data where live==1""")
+
+print(len(selected2.fetchall()))
+
+for row in selected2.fetchall():
+    print(row)
+
+db.close()
