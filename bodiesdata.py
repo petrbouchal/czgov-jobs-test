@@ -275,7 +275,7 @@ paramsjson = {
             },
             "separateurl" : True,
             "joburldata" : {
-                "itemselect" : "div.region a.OKdistinct2.noPrint"
+                "itemselect" : "div.region div div div[id] a.OKdistinct2.noPrint"
             },
             "paginate" : False
         },
@@ -296,7 +296,101 @@ paramsjson = {
             },
             "paginate" : True,
             "paginatelinkselect" : "div.nabidkaPrace div.pagination a[rel=next]"
+        },
+    "NKU" :
+        {
+            "fullname" : "Nejvyšší kontrolní úřad",
+            "abbrev" : "NKU",
+            "abbrevcz" : "NKÚ",
+            "jobsurl" : "http://nku.cz/cz/kariera/nabidka-volnych-pracovnich-mist.htm",
+            "jobtitledata" : {
+                "itemselect" : "div#mother div#stredni h3 a",
+                "additionaltitletext" : False
+            },
+            "separateurl" : False,
+            "joburldata" : {
+                "itemselect" : ""
+            },
+            "paginate" : False
+        },
+    "CSU" :
+        {
+            "fullname" : "Nejvyšší kontrolní úřad",
+            "abbrev" : "CSU",
+            "abbrevcz" : "ČSÚ",
+            "jobsurl" : "http://www.czso.cz/csu/redakce.nsf/i/volna_mista",
+            "jobtitledata" : {
+                "itemselect" : "div#content div#publikace ul li.home a",
+                "additionaltitletext" : False
+            },
+            "separateurl" : False,
+            "joburldata" : {
+                "itemselect" : ""
+            },
+            "paginate" : False
+        },
+    "CzechInvest" :
+        {
+            "fullname" : "CzechInvest",
+            "abbrev" : "CzechInvest",
+            "abbrevcz" : "CzechInvest",
+            "jobsurl" : "http://www.czechinvest.org/kariera",
+            "jobtitledata" : {
+                "itemselect" : "div#content div.main-spc table.actions tbody tr td h3 a",
+                "additionaltitletext" : False
+            },
+            "separateurl" : False,
+            "joburldata" : {
+                "itemselect" : ""
+            },
+            "paginate" : False
+        },
+    "CS-P" :
+        {
+            "fullname" : "Celní správa (pracovní poměr)",
+            "abbrev" : "CS-P",
+            "abbrevcz" : "CS pracovní",
+            "jobsurl" : "http://www.celnisprava.cz/cz/volne-pracovni-pozice/Stranky/volna-pracovni-mista-u-celni-spravy.aspx",
+            "jobtitledata" : {
+                "itemselect" : "div#page div#Header div.webpart-layout-main div.bullet-list a",
+                "additionaltitletext" : False
+            },
+            "separateurl" : False,
+            "joburldata" : {
+                "itemselect" : ""
+            },
+            "paginate" : False
+        },
+    "CS-S" :
+        {
+            "fullname" : "Celní správa (služební poměr)",
+            "abbrev" : "CS",
+            "abbrevcz" : "CS služební",
+            "jobsurl" : "http://www.celnisprava.cz/cz/volne-pracovni-pozice/Stranky/volna-sluzebni-mista-u-celni-spravy.aspx",
+            "jobtitledata" : {
+                "itemselect" : "div#page div#Header div.webpart-layout-main div.bullet-list a",
+                "additionaltitletext" : False
+            },
+            "separateurl" : False,
+            "joburldata" : {
+                "itemselect" : ""
+            },
+            "paginate" : False
+        },
+    "CS-S2" :
+        {
+            "fullname" : "Celní správa (služební poměr)",
+            "abbrev" : "CS-S",
+            "abbrevcz" : "CS služební",
+            "jobsurl" : "http://www.celnisprava.cz/cz/volne-pracovni-pozice/Stranky/volna-sluzebni-mista-v-celni-sprave-vyberova-rizeni.aspx",
+            "jobtitledata" : {
+                "itemselect" : "div#page div#Header div.webpart-layout-main div.bullet-list a",
+                "additionaltitletext" : False
+            },
+            "separateurl" : False,
+            "joburldata" : {
+                "itemselect" : ""
+            },
+            "paginate" : False
         }
 }
-
-

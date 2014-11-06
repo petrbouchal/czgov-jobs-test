@@ -60,9 +60,9 @@ def scrapejobs(timestamp, bodydata):
     if bodydata['jobtitledata']['additionaltitletext']:
         additionaltexts = page.select(bodydata['jobtitledata']['additionaltextselect'])
         for count in range(0, len(jobs), 1):
-            jobs[count].contents = jobs[count].contents[0] + ', ' + additionaltexts[count].contents[0]
+            jobs[count].contents = jobs[count].contents[0].strip() + ', ' + additionaltexts[count].contents[0].strip()
     else:
-        for job in jobs: job.contents = job.contents[0]
+        for job in jobs: job.contents = job.contents[0].strip()
 
     for job in jobs:
         fulljoburl = completeurl(bodydata['jobsurl'], job['href'])
@@ -108,3 +108,47 @@ def scrapepages(timestamp, bodydata):
     print('Nalezeno ' + str(len(alljobslist)) + ' pozic na ' + str(bodydata['abbrevcz']))
 
     return alljobslist
+
+def savejobdb(row, now, tablename='data',dbname='data.sqlite'):
+    # import litepiesql
+    import sqlite3
+
+    db = sqlite3.connect(dbname)
+    cursor = db.cursor()
+
+    # logic:
+    # select job from table with title and url matching this job
+    # depending on whether there is one matching these criteria,
+    # create query to either inset or update
+    # if update, change lastseen to now
+    # if not, set both lastseen and firstseen to now
+
+    # try to select line corresponding to current job
+
+    existingjobquery = """
+                       SELECT * FROM""" + tablename + """
+                       WHERE jobtitle=row[jobtitle] AND joburl=row[joburl
+                       ORDER BY datetime
+                       """
+
+    existingjob = cursor.execute(existingjobquery)
+    lastseen = now
+
+    if len(existingjob.fetchall())==0:
+        firstseen = now
+        thisjobquery = """
+                       INSERT INTO ...
+                       """
+    else:
+        firstseen = existingjob.fetchall()[0]['firstseen']
+        thisjobquery = """
+                       UPDATE ...
+                       WHERE ...
+                       """
+
+    cursor.execute(thisjobquery)
+
+    # commit and close
+
+    db.commit()
+    db.close()

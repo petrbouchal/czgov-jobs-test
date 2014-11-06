@@ -8,21 +8,23 @@
 ## To do - presenation
 
 - [ ] improve documentation - scope and intent
+- [ ] update data model documentation
 
 ## To do - scope
 
 - [ ] add MZP (waiting for job to appear to learn from)
-- [x] add CSSZ (in progress: should be easy)
-- [ ] add NKU (should be easy)
+- [x] add CSSZ
+- [x] add NKU
 - [x] add FU/FS (could use new functionality - pagination and multi-element titles)
-- [ ] add UP (requires use new functionality - different-element title and url)
+- [x] add UP (requires use new functionality - different-element title and url)
 - [ ] add UOOZ (requires new functionality - link-less jobs)
-- [ ] add CUZK
+- [ ] add CUZK (not clear about central/regional)
 - [ ] add Hygiena
 - [x] add MZV
 
 ## To do - technical
 
+- [ ] move documentation to wiki
 - [ ] programmatically allow for link-less jobs (linking only to general jobs page)
 - [x] add fallback for when nothing is found
 - [x] implement getting title and url from different elements
@@ -40,23 +42,13 @@
 
 ## Links
 
-- Scraper a možnost stažení dat: https://morph.io/petrbouchal/GovJobsCZ
-- Shiny app: http://petrbouchal.shinyapps.io/czjobs
-- Shiny app na webu Byrokrates: http://byrokrates.cz/praceprostat
+- [Scraper a možnost stažení dat](https://morph.io/petrbouchal/GovJobsCZ)
+- [Shiny app](http://petrbouchal.shinyapps.io/czjobs)
+- [Shiny app na webu Byrokrates](http://byrokrates.cz/praceprostat)
 
 ## Documentation
 
 ### Data model for input parameters
-
-Each organisation has two entries:
-
-1. Basic listing entered as a dictionary entry, with a list as the value
-
-Data model for dictionary entry:
-
-    'Abbrev' = [HumanFriendlyAbbrev (str), FullName (str), HomePageUrl (str), JobPageUrl (str)]
-
-2. Detailed input parameters as dictionary entry, with a list as the value
 
 Data model for dictionary entry:
 
@@ -74,8 +66,6 @@ Data model for dictionary entry:
                 pagLayer1spec (dict),
                 pagLayer2spec (dict),
                 pagURLitemSpec (dict)]
-
-But perhaps the whole structure should be changed to a dictionary so the scraping routine can rely on named arguments instead of order. If not, it will need to be reordered to put the boolean switches first.
 
 
 
