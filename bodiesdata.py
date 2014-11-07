@@ -183,9 +183,9 @@ paramsjson = {
             "fullname": "Ministerstvo životního prostředí",
             "abbrev": "MZP",
             "abbrevcz": "MŽP",
-            "jobsurl": "http://mzp.cz/cz/volna_mista",
+            "jobsurl": "http://mzp.jobs.cz/",
             "jobtitledata": {
-                "itemselect": "div#content div.contentMain h2 a",
+                "itemselect": "div#content div.contentMain div.contentMainText div#linksList ul#g2-1 li a",
                 "additionaltitletext": False
             },
             "separateurl": False,
@@ -392,5 +392,22 @@ paramsjson = {
                 "itemselect" : ""
             },
             "paginate" : False
+        },
+    "CSI" :
+        {
+            "fullname" : "Česká školní inspekce",
+            "abbrev" : "CSI",
+            "abbrevcz" : "ČŠI",
+            "jobsurl" : "http://www.csicr.cz/cz/KARIERA",
+            "jobtitledata" : {
+                "itemselect" : "article#content section.tabs article.active div.detail ul.list li h2 a",
+                "additionaltitletext" : False
+            },
+            "separateurl" : False,
+            "joburldata" : {
+                "itemselect" : ""
+            },
+            "paginate" : True,
+            "paginatelinkselect": "article.active div span.paging-buble-active + span.paging-buble-inactive a"
         }
 }

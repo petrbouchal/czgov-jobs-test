@@ -5,7 +5,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
-from lib_minscrapers import scrapejobs, scrapepages, savejobsdb
+from lib_minscrapers import scrapejobs, scrapepages
 from datetime import datetime
 
 now = datetime.now()
@@ -15,17 +15,18 @@ __author__ = 'petrbouchal'
 from bodiesdata import paramsjson as minparameters
 # Loop
 
+print('Starting scraper...')
+
 activedepts = ['MPO', 'MPSV', 'UV', 'MZd', 'MSMT', 'MF', 'MMR', 'MV', 'MZe', 'MK', 'MSp',
-               'MO', 'MD', 'MZV', 'CSSZ','FS','UP','NKU','CzechInvest','CS-P','CS-S','CS-S2']
-# activedepts = ['CS-S','CS-P','CS-S2']
+               'MO', 'MD', 'MZV', 'CSSZ','FS','UP','NKU','CzechInvest','CS-P','CS-S','CS-S2',
+               'CSI','MZP']
+# activedepts = ['MZP']
 
 jobsallbodies = []
 for dept in activedepts:
     # print(dept)
     jobsallbodies = jobsallbodies + scrapepages(now, minparameters[dept])
 print('Celkem nalezeno pozic: ', len(jobsallbodies))
-from pprint import pprint
-# pprint(jobsall)
 
 import litepiesql
 import sqlite3
@@ -33,29 +34,14 @@ import sqlite3
 db = sqlite3.connect('data.sqlite')
 cursor = db.cursor()
 
-# Create table if it doesn't exist [can be rewritten to put condition straight into SQL]
-cursor.execute("""
-                  IF NOT EXISTS data CREATE TABLE data
-                  (jobid, jobtitle, joburl, dept, firstseen timestamp, lastseen timestamp)
-               """)
-
+if len(cursor.execute("""SELECT name FROM sqlite_master WHERE type='table' AND name='data';""").fetchall()) == 0:
+    cursor.execute("""CREATE TABLE data
+                        (jobtitle, joburl, dept, datetime timestamp)
+                    """)
 db.commit()
 db.close()
 
-
 db = litepiesql.Database('data.sqlite')
 for row in jobsallbodies:
-    # db.insert('data', row)
-    savejobsdb(row, now)
+    db.insert('data', row)
     # print(row)
-
-
-# mark up whether job is live (will need to read all jobs)
-# how many days it's been up
-# the SQL to do this looks like this (each line needs to be executed separately by cursor.execute())
-"""
-update data set seenfor=round((strftime('%s',lastseen)-strftime('%s',firstseen))/60/60/12);
-update data set live=(lastseen==(select max(lastseen) from data));
-update data set latest=(seenfor==0 and live==1);
-"""
-
