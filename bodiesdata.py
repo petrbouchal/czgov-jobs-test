@@ -22,9 +22,9 @@ paramsjson = {
             "fullname": "Ministerstvo průmyslu a obchodu",
             "abbrev" : "MPO",
             "abbrevcz": "MPO",
-            "jobsurl": "http://www.mpo.cz/dokument61716.html",
+            "jobsurl": "http://www.mpo.cz/cz/ministr-a-ministerstvo/ministerstvo/#category315",
             "jobtitledata" : {
-                "itemselect": "div#text ul a",
+                "itemselect": "a[href="/dokument61716.html"] ~ h4 a",
                 "additionaltitletext" : False
             },
             "separateurl": False,
