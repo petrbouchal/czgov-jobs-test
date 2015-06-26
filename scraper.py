@@ -28,6 +28,8 @@ for dept in activedepts:
     jobsallbodies = jobsallbodies + scrapepages(now, minparameters[dept])
 print('Celkem nalezeno pozic: ', len(jobsallbodies))
 
+print(jobsallbodies)
+
 import litepiesql
 import sqlite3
 
