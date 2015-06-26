@@ -24,7 +24,7 @@ paramsjson = {
             "abbrevcz": "MPO",
             "jobsurl": "http://www.mpo.cz/cz/ministr-a-ministerstvo/ministerstvo/#category315",
             "jobtitledata" : {
-                "itemselect": "a[href=\"/dokument61716.html\"] ~ h4 a",
+                "itemselect": "a[href=\"/dokument61716.html\"]",
                 "additionaltitletext" : False
             },
             "separateurl": False,
